@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/gallMain.css}">
+	<script>
+		let sub = document.getElementsByTagName("#intro_box span")
+		if(sub.value == "없음")
+			sub.style.color = "#999"
+	</script>
+</head>
+<body>
+	<%@ include file="header.jsp" %>
+	<main>
+		<section>
+			<div id=header>
+				<h2><a href=gallMain.jsp?idx=<%=idx%>><%=gall.getName() %></a></h2>
+			</div>
+				<%
+					if(gall.getType().equals("minor")) {
+						User admin = UserDao.getInstance().select(gall.getAdmin());
+						String sub = "없음";
+						User sub_admin;
+						if(gall.getSub_admin() != null) {
+							sub_admin = UserDao.getInstance().select(gall.getSub_admin());
+							sub = sub_admin.getNick();
+						}
+						%>
+						<div id=intro_box class=top_box>
+							<div>
+								<%
+									if(gall.getImage() == null) {
+										%><div id=no_img><img src="image/no-pictures.png" id=null></div><%
+									}
+									else {
+										%><img src="image/<%=gall.getImage() %>" class=left><%
+									}
+								%>
+								<p><%=gall.getDesc() %>
+							</div>
+							<div>
+								<div><strong>매니저</strong><%=admin.getNick() %>(<%=gall.getAdmin() %>)</div>
+								<div><strong>부매니저</strong><span><%=sub %></span><%if(!sub.equals("없음")) {%>(<%=gall.getSub_admin() %>)<%}%></div>
+								<div><strong>개설일</strong><%=gall.getDate() %></div>
+								<div><button id=report class=main_color>갤러리 관리 내역</button></div>
+							</div>
+						</div>
+						<%
+					}
+					else if (list.size() >= 6) {
+					%><div id=issue_box class=top_box>
+						<ul><%
+						int n[] = new int[5];
+			        	int num = 0;
+				        for(int i = 0; i<n.length; i++) {
+				            do {
+				            	num = random.nextInt(list.size());
+				            }while(exists(n,num));
+				            n[i] = num;
+				        }
+						for (int i = 0; i < n.length; i++) {
+							%><li>
+								<a href=result.jsp?idx=<%=list.get(n[i]).getIdx() %>><%=list.get(n[i]).getTitle() %></a>
+								<span class=right><%=list.get(n[i]).getWriter() %></span>
+							</li><%
+						}
+						num = random.nextInt(list.size());
+						
+						%></ul>
+						<div>
+							<a href=result.jsp?idx=<%=list.get(num).getIdx() %>><img src=image/image12.jpg align=top></a>
+							<div class=inline>
+								<p><a href=result.jsp?idx=<%=list.get(num).getIdx() %>><b><%=list.get(num).getTitle() %></b></a>
+								<p><a href=result.jsp?idx=<%=list.get(num).getIdx() %>><%=list.get(num).getContent() %></a>
+								<p><b>작성자</b> : <%=list.get(num).getWriter() %>
+							</div>
+						</div>
+					</div><%
+					}
+				%>
+			<div id=mid>
+				<%
+					if (post == null) {
+						%>
+						<button onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>
+						<%
+					}
+					else if (post.equals("reco")) {
+						%>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>
+						<%
+					}
+					else if (post.equals("notice")) {
+						%>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>
+						<%
+					}
+				%>
+				<div class=right>
+					<div class=right onclick="location.href='write.jsp?idx=<%=idx%>'">
+						<img src=image/pencil2.png>글쓰기
+					</div>
+					<select class=right>
+						<option>30개
+						<option selected="selected">50개
+						<option>100개
+					</select>
+				</div>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th width=50px>번호
+						<th>제목
+						<th width=100px>글쓴이
+						<th width=80px>작성일
+						<th width=50px>조회
+						<th width=50px>추천
+					</tr>
+				</thead>
+				<tbody>
+				<%
+					for(int i = list.size()-1; i >= 0; i--) {
+						Boolean isFixed = UserDao.getInstance().isFixed(list.get(i).getMember_id());
+						String date;
+						if (!list.get(i).getDate().substring(0,4).equals(String.valueOf(LocalDate.now().getYear())))
+							date = list.get(i).getDate().substring(2,4)+"."+list.get(i).getDate().substring(5,7)+"."
+								+list.get(i).getDate().substring(8,10);
+						else if (!list.get(i).getDate().substring(0,10).equals(LocalDate.now().toString()))
+							date = list.get(i).getDate().substring(5,7)+"."+list.get(i).getDate().substring(8,10);
+						else
+							date = list.get(i).getDate().substring(11,16);
+						%><tr>
+							<td><%=i+1 %>
+							<td align=left>
+								<a href="result.jsp?idx=<%= idx %>&p_idx=<%=list.get(i).getIdx() %>">
+								<img src=image/chat.png><%=list.get(i).getTitle() %></a>
+								<a href="result.jsp?idx=<%= idx %>&p_idx=<%=list.get(i).getIdx() %>#reply">[<%=list.get(i).getReplyNum() %>]</a>
+							<td id=w><%=list.get(i).getWriter() %>
+								<%
+									if(list.get(i).getMember_id() == null) {
+										String ipAddress = request.getRemoteAddr();
+										if(ipAddress.equalsIgnoreCase("0:0:0:0:0:0:0:1")){
+										    InetAddress inetAddress = InetAddress.getLocalHost();
+										    ipAddress = inetAddress.getHostAddress();
+										}
+										%><span>(<%=ipAddress.substring(0,7)%>)</span><%
+									}
+									else if(isFixed) {%><a href=#><img src=image/fix_nik.gif></a><%}
+									else if(!isFixed) {%><a href=#><img src=image/nik.gif></a><%}
+								%>
+							<td><%=date %>
+							<td><%=list.get(i).getHits() %>
+							<td><%=list.get(i).getRecommend() %>
+						<%
+					}
+				%>
+				</tbody>
+			</table>
+			<div id=bot>
+				<%
+					if (post == null) {
+						%>
+						<button onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button id=ns onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<%
+					}
+					else if (post.equals("reco")) {
+						%>
+						<button id=ns onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<%
+					}
+					else if (post.equals("notice")) {
+						%>
+						<button id=ns onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
+						<button id=ns onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
+						<%
+					}
+				%>
+				<button class=right onclick="location.href='write.jsp?idx=<%=idx%>'">글쓰기</button>
+			</div>
+		</section>
+		<aside>
+			<div id=login>
+				<%
+					if (session.getAttribute("code") == null) {
+						%>
+						<p><a href=loginForm.jsp?url=<%= request.getRequestURL()+"?"+request.getQueryString() %>>로그인해 주세요.</a>
+						<div>
+							<a href=#>MY갤로그</a> &nbsp;|&nbsp;
+							<a href=#>즐겨찾기</a> &nbsp;|&nbsp;
+							<a href=#><img src=image/bell.png> 알림</a>
+						</div>
+						<%
+					}
+					else {
+						%>
+						<p><a href=#><b><%=session.getAttribute("nick") %></b>님<img src=image/right-arrow3.png></a>
+						<button onclick="location.href='logout.jsp?url=<%= request.getRequestURL()+"?"+request.getQueryString() %>'">로그아웃</button>
+						<div>
+							<a href=#>MY갤로그</a> |
+							<a href=#>즐겨찾기</a> |
+							<a href=#>운영/가입</a> |
+							<a href=#><img src=image/bell.png> 알림</a>
+						</div>
+						<%
+					}
+				%>
+			</div>
+		</aside>
+	</main>
+</body>
+</html>

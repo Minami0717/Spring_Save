@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>minami.com</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script th:src="@{/js/header.js}"></script>
+	<script>
+		$(function () {
+			$("header").load("header");
+		})
+	</script>
+</head>
+<body>
+	<header></header>
+	<main>
+		<div id=main_content>
+			<section>
+				<div id=hit>
+					<div>
+						<h4><a href=gallMain.html?idx=2>HIT</a></h4>
+		                <div class="right">
+		                    <span><b>1</b>/3</span>
+		                    <button><img th:src="@{/image/play-button2.png}"></button><button><img th:src="@{/image/play-button.png}"></button>
+		                </div>
+					</div>
+					<img th:src="@{/image/test.jpg}">
+					<img th:src="@{/image/test.jpg}">
+					<img th:src="@{/image/test.jpg}">
+					<img th:src="@{/image/test.jpg}">
+				</div>
+				<div id=best>
+					<div>
+						<h4><a href=#>실시간 베스트<img th:src="@{/image/check.png}"></a></h4>
+		                <h4><a href=#>실베<span>라이트</span><img th:src="@{/image/check2.png}"></a></h4>
+		                <h5><a href=gallMain.html?idx=1>실베<img th:src="@{/image/play2.png}" id="s"></a></h5>
+					</div>
+					<ul>
+						<li onclick="location.href=''" th:each="post : ${postList}">
+							<div>
+								<a th:text="${post.title}"></a>
+								<span id=rn th:text="'['+${post.replyNum} + ']'">[]</span>
+							</div>
+							<div><span id=name></span><span id=date></span></div>
+					</ul>
+				</div>
+			</section>
+			<aside>
+					<div id=login>
+						<form action=checkID.jsp?url= method=post>
+							<div>
+								<input type=text placeholder="아이디" name=code>
+								<span><input type=checkbox> 아이디 저장</span>
+							</div>
+							<div>
+								<input type=password placeholder="비밀번호" name=pw>
+								<input type=submit value=로그인>
+							</div>
+						</form>
+						<div>
+							<b><a href=joinForm.jsp>회원가입</a></b> |
+							<a href=#>아이디</a> · <a href=#>비밀번호 찾기</a> |
+							<img th:src="@{/image/bell.png}">
+						</div>
+					</div>
+					<div id=user_info>
+						<div>
+							<a href=#><b></b>님<img th:src="@{/image/right-arrow3.png}"></a>
+							<button onclick="location.href='logout.jsp?url=<%=request.getRequestURL()%>'">로그아웃</button>
+						</div>
+						<div>
+							글 <a href=#>0</a> 댓글 <a href=#>0</a> 방명록 <a href=#>0</a>
+						</div>
+						<div>
+							<span><a href=#>MY블로그</a></span>
+							<span><a href=#>고정닉정보</a></span>
+							<span><a href=#>상품권</a></span>
+							<span><a href=#>즐겨찾기</a></span>
+							<span><a href=#>운영/가입</a></span>
+							<span><a href=#><img th:src="@{/image/bell.png}">알림</a></span>
+						</div>
+					</div>
+				<div id=silbuk>
+					<div>
+						<h5>실시간 순위</h5>
+						<div id=inline>
+							<a class=main_color onclick=f_main()>메인</a>
+		                    <a onclick=f_minor()>마이너</a>
+		                    <a onclick=f_mini()>미니</a>
+						</div>
+					</div>
+					<ol id=main style=display:none>
+						<li>
+							<a href="gallMain.html?idx=<%= main.get(i).getIdx() %>">
+								<span></span>
+								<span></span>
+							</a>
+						</li>
+					</ol>
+					<ol id=minor style=display:none>
+							<li>
+								<a href="gallMain.html?idx=<%= minor.get(i).getIdx() %>">
+									<span></span>
+									<span></span>
+								</a>
+							</li>
+					</ol>
+					<ol id=mini style=display:none>
+							<li>
+								<a href="gallMain.html?idx=<%= mini.get(i).getIdx() %>">
+									<span></span>
+									<span></span>
+								</a>
+							</li>
+					</ol>
+					<div id=rank>11위 - 20위</div>
+				</div>
+				<div id=ad><a href=http://www.kcd.or.kr><img th:src="@{/image/digital1.jpg}"></a></div>
+			</aside>
+		</div>
+	</main>
+	<footer>
+	</footer>
+</body>
+<script th:src="@{/js/main.js}"></script>
+<style>
+	.on {text-decoration: underline;}
+</style>
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.boardview.board.BoardMapper">
+    <insert id="writeBoard" parameterType="BoardEntity">
+        insert into t_board
+        (title,ctnt,writer)
+        values
+        (#{title},#{ctnt},#{writer})
+    </insert>
+
+    <select id="selBoardAll" resultType="BoardEntity">
+        select A.iboard,A.title,A.ctnt,B.nm writer,
+            A.created_at createdAt, A.updated_at updatedAt
+        from t_board A
+        inner join t_user B
+        on A.iuser = B.iuser
+        order by iboard desc
+    </select>
+
+    <select id="selBoardById" resultType="BoardEntity">
+        select A.iboard,A.title,A.ctnt,B.nm writer,
+        A.created_at createdAt, A.updated_at updatedAt
+        from t_board A
+        inner join t_user B
+        on A.iuser = B.iuser
+        where iboard = #{iboard}
+    </select>
+
+    <update id="modBoard" parameterType="BoardEntity">
+        update t_board
+        set title = #{title}, ctnt = #{ctnt}, writer = #{writer},
+            updated_at = now()
+        where iboard = #{iboard}
+    </update>
+
+    <delete id="delBoard" parameterType="BoardEntity">
+        delete from t_board
+        where iboard = #{iboard}
+    </delete>
+
+</mapper>
