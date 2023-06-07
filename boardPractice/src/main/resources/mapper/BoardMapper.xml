@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boardpractice.board.BoardMapper">
+
+    <insert id="insBoard" useGeneratedKeys="true" keyProperty="iboard">
+        insert t_board
+        set title = #{title},
+            ctnt = #{ctnt},
+            iuser = #{iuser}
+    </insert>
+
+    <select id="selBoard" resultType="BoardVo">
+        select A.iboard, A.title, B.nm writer,
+            A.created_at createdAt, B.main_pic writerMainPic
+        from t_board A
+        inner join t_user B
+        on A.iuser = B.iuser
+        order by iboard desc
+        limit #{startIdx}, #{row}
+    </select>
+
+    <select id="selBoardCount" resultType="BoardCntVo">
+        select count(iboard) cnt
+        from t_board
+    </select>
+
+    <select id="selBoardById" resultType="BoardDetailVo">
+        select A.iboard, A.title, A.ctnt, B.nm writer,
+        A.created_at createdAt, B.main_pic writerMainPic
+        from t_board A
+        inner join t_user B
+        on A.iuser = B.iuser
+        where iboard = #{iboard}
+    </select>
+
+    <delete id="delBoard">
+        delete from t_board
+        where iboard = #{iboard} and iuser = #{iuser}
+    </delete>
+
+    <update id="updBoard">
+        update t_board
+        set title = #{title},
+            ctnt = #{ctnt},
+            updated_at = current_timestamp
+        where iboard = #{iboard} and iuser = #{iuser}
+    </update>
+
+    <select id="selIboardByIuser">
+        select iboard
+        from t_board
+        where iuser = #{iuser}
+    </select>
+
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.boardpractice.user.UserMapper">
+
+    <insert id="insUser" parameterType="UserInsDto">
+        insert t_user
+        set uid = #{uid},
+            upw = #{upw},
+            nm = #{nm},
+            gender = #{gender},
+            addr = #{addr}
+    </insert>
+
+    <select id="selUserByUid">
+        select * from t_user
+        where uid = #{uid}
+    </select>
+
+    <update id="updUserPw">
+        update t_user
+        set upw = #{upw},
+            updated_at = current_timestamp
+        where iuser = #{iuser}
+    </update>
+
+    <delete id="delUser">
+        delete from t_user
+        where iuser = #{iuser} and upw = #{upw}
+    </delete>
+
+    <update id="updUserPic">
+        update t_user
+        set main_pic = #{mainPic},
+            updated_at = current_timestamp
+        where iuser = #{iuser}
+    </update>
+
+    <select id="checkIuser">
+        select *
+        from t_user
+        where iuser = #{iuser} and upw = #{upw}
+    </select>
+
+</mapper>
