@@ -4,18 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Data
 @Entity
-public class Post {
+@Data
+public class Cmt {
     @Id
     private int id;
-    private String title;
     private String content;
+    private int postId;
     private String writer;
     private String createdAt;
-    private int hits;
-    private int recoNum;
-    private int decoNum;
-    private String pw;
-    private int gallId;
 }

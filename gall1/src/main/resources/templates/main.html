@@ -3,10 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>minami.com</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script th:src="@{/js/header.js}"></script>
 	<script>
 		$(function () {
 			$("header").load("header");
@@ -20,7 +18,7 @@
 			<section>
 				<div id=hit>
 					<div>
-						<h4><a href=gallMain.html?idx=2>HIT</a></h4>
+						<h4><a href=/board/lists?id=2>HIT</a></h4>
 		                <div class="right">
 		                    <span><b>1</b>/3</span>
 		                    <button><img th:src="@{/image/play-button2.png}"></button><button><img th:src="@{/image/play-button.png}"></button>
@@ -35,15 +33,15 @@
 					<div>
 						<h4><a href=#>실시간 베스트<img th:src="@{/image/check.png}"></a></h4>
 		                <h4><a href=#>실베<span>라이트</span><img th:src="@{/image/check2.png}"></a></h4>
-		                <h5><a href=gallMain.html?idx=1>실베<img th:src="@{/image/play2.png}" id="s"></a></h5>
+		                <h5><a href=/board/lists?id=1>실갤<img th:src="@{/image/play2.png}" id="s"></a></h5>
 					</div>
 					<ul>
-						<li onclick="location.href=''" th:each="post : ${postList}">
+						<li th:onclick="|location.href='@{/board/lists(id = ${post.gallId})}'|" th:each="post : ${postList}">
 							<div>
 								<a th:text="${post.title}"></a>
-								<span id=rn th:text="'['+${post.replyNum} + ']'">[]</span>
+								<span id=rn th:text="'['+${post.cmtNum} + ']'">[]</span>
 							</div>
-							<div><span id=name></span><span id=date></span></div>
+							<div><span id=name th:text="${post.gallName}"></span><span id=date th:text="${#temporals.format(post.createdAt, 'HH:mm')}"></span></div>
 					</ul>
 				</div>
 			</section>

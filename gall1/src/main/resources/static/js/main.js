@@ -4,6 +4,7 @@ let mini = document.getElementById("mini");
 let a_main = document.querySelector("#inline a:first-child");
 let a_minor = document.querySelector("#inline a:nth-child(2)");
 let a_mini = document.querySelector("#inline a:last-child");
+let ran = Math.floor(Math.random() * 3);
 
 function change() {
     switch (ran) {

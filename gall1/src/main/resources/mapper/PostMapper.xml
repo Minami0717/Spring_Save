@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.minami.gall1.mapper.PostMapper">
+
+    <select id="selBestPost" resultType="BestPostVo">
+        select A.id, A.gall_id gallId, A.title, B.name gallName, A.created_at createdAt
+        from post A
+        inner join gall_list B
+        on A.gall_id = B.id
+        order by A.id desc
+    </select>
+
+    <select id="selPostByGallId" resultType="PostVo">
+        select id, title, writer, created_at createdAt,
+            hits, reco_num recoNum
+        from post
+        where
+        <choose>
+            <when test="gallId == 1">
+                reco_num >= 30
+            </when>
+            <when test="gallId == 2">
+                reco_num >= 20
+            </when>
+            <otherwise>
+                gall_id = #{gallId}
+            </otherwise>
+        </choose>
+        limit #{startIdx}, #{listNum}
+    </select>
+
+    <insert id="insPost">
+        insert post
+        set gall_id = #{gallId},
+            title = #{title},
+            content = #{content},
+            writer = #{writer},
+            pw = #{pw}
+    </insert>
+
+    <select id="selPostCount" resultType="int">
+        select count(id)
+        from post
+        where gall_id = #{gallId}
+    </select>
+
+</mapper>

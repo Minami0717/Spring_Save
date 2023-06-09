@@ -38,7 +38,7 @@ td[align=left] a:last-of-type {color: #999;}
 
 #bot button {width: 82px; height: 35px; background: #d2af8a; color: white; border: 1px solid #d2af8a; border-bottom-width: 3px;
     margin-top: 10px; margin-bottom: 40px; font-weight: bold; border-radius: 2px; cursor: pointer;}
-#bot #ns {background: white; color: #d2af8a;}
+#bot .ns {background: white; color: #d2af8a;}
 #header {padding-bottom: 20px;}
 
 #issue_box ul {float: left; width: 300px;}

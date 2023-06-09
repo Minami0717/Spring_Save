@@ -1,22 +1,20 @@
 package com.minami.gall1.service;
 
-import com.minami.gall1.model.Post;
-import com.minami.gall1.repository.GallRepository;
+import com.minami.gall1.mapper.GallMapper;
+import com.minami.gall1.model.GallVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class GallService {
-    private final GallRepository repository;
+    private final GallMapper mapper;
 
     @Autowired
-    public GallService(GallRepository repository) {
-        this.repository = repository;
+    public GallService(GallMapper mapper) {
+        this.mapper = mapper;
     }
 
-    public List<Post> selPost() {
-        return repository.findAll();
+    public GallVo selGallInfoById(int id) {
+        return mapper.selGallInfoById(id);
     }
 }

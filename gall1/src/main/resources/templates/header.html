@@ -1,5 +1,9 @@
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+  <script th:src="@{/js/header.js}"></script>
+</head>
 <div id=top>
-  <h1><a href=main.html>minami.com</a></h1>
+  <h1><a th:href="@{/}">minami.com</a></h1>
   <div id=search>
     <form action="search.jsp" autocomplete="off">
       <input type=text placeholder="게시판 & 통합검색" name="word" value>
@@ -11,8 +15,8 @@
         <h5>최근 검색어<button onclick=delCheck()>전체 삭제</button></h5>
         <div id=empty>최근 검색어가 없습니다.</div>
         <ul>
-          <li><a href="search.jsp?word=<%= sList.get(i).getWord() %>&save=<%=save%>"></a>
-            <button onclick="location.href='delSearch.jsp?idx=<%=sList.get(i).getIdx()%>'"><img th:src="@{/image/x1.png}"></button>
+          <li><a href=""></a>
+            <button onclick="location.href=''"><img th:src="@{/image/x1.png}"></button>
         </ul>
       </div>
       <div id=save>
@@ -44,9 +48,9 @@
   <button><img th:src="@{/image/drop-down-arrow2.png}"></button>
   <img th:src="@{/image/left.png}">
   <ul>
-    <li><a href="gallMain.html?idx=<%=index %>"></a>
-      <img th:src="@{/image/x1.png}" onclick="location.href='delVisit.jsp?gall=<%= viList.get(i) %>&url=<%=request.getRequestURL()%>'">
-      <img th:src="@{/image/x1.png}" onclick="location.href='delVisit.jsp?gall=<%= viList.get(i) %>&url=<%=request.getRequestURL()%>'">
+    <li><a href=""></a>
+      <img th:src="@{/image/x1.png}" onclick="location.href=''">
+      <img th:src="@{/image/x1.png}" onclick="location.href=''">
   </ul>
   <div class="right"><img th:src="@{/image/right-arrow.png}"><a href="#">전체</a></div>
 </div>
