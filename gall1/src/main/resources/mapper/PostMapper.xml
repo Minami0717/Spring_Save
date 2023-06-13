@@ -28,7 +28,12 @@
                 gall_id = #{gallId}
             </otherwise>
         </choose>
+        order by id desc
         limit #{startIdx}, #{listNum}
+    </select>
+
+    <select id="selPostDetail" resultType="PostDetailVo">
+
     </select>
 
     <insert id="insPost">
@@ -43,7 +48,18 @@
     <select id="selPostCount" resultType="int">
         select count(id)
         from post
-        where gall_id = #{gallId}
+        where
+        <choose>
+            <when test="gallId == 1">
+                reco_num >= 30
+            </when>
+            <when test="gallId == 2">
+                reco_num >= 20
+            </when>
+            <otherwise>
+                gall_id = #{gallId}
+            </otherwise>
+        </choose>
     </select>
 
 </mapper>

@@ -66,9 +66,9 @@
 <!--				</div>-->
 <!--			</div>-->
 			<div id=mid>
-				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>
-				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>
-				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>
+				<button th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id})}'|">전체글</button>
+				<button class=white th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id}, exception_mode = recommend)}'|">추천글</button>
+				<button class=white th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id}, exception_mode = notice)}'|">공지</button>
 
 <!--				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
 <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
@@ -84,7 +84,7 @@
 					<form>
 						<select class=right onchange=changeListNum(this.value)>
 							<option value="30">30개
-							<option value="50" selected="selected">50개
+							<option value="50" selected>50개
 							<option value="100">100개
 						</select>
 					</form>
@@ -102,9 +102,8 @@
 					</tr>
 				</thead>
 				<tbody>
-				<tr th:each="i : ${#numbers.sequence(postCount - 1, 0, -1)}"
-					th:with="post=${postList[i]}">
-					<td th:text="${i + 1}">
+				<tr th:each="post, i : ${postList}">
+					<td th:text="${pageInfo.postCount - (((pageInfo.nowPage - 1) * pageInfo.listNum) + i.index)}">
 					<td align=left>
 						<a href="" th:text="${post.title}">
 							<img th:src="@{/image/chat.png}">
@@ -131,9 +130,11 @@
 
 				<button class=right th:onclick="|location.href='@{/board/write(id = ${gallInfo.id})}'|">글쓰기</button>
 			</div>
-			<th:block th:each="page : ${#numbers.sequence(1, maxPage)}">
-				<a th:if="${page != nowPage}" th:href="@{/board/lists(id = ${gallInfo.id}, page = ${page})}" th:text="${page}"></a>
-				<strong th:if="${page == nowPage}" th:text="${page}" style="color: red"></strong>
+			<th:block th:each="page : ${#numbers.sequence(1, pageInfo.maxPage)}">
+				<a th:if="${page != pageInfo.nowPage}"
+				   th:href="@{/board/lists(id = ${gallInfo.id}, page = ${page}, list-num = ${pageInfo.listNum})}"
+				   th:text="${page}"></a>
+				<strong th:if="${page == pageInfo.nowPage}" th:text="${page}" style="color: red"></strong>
 			</th:block>
 		</section>
 		<aside>

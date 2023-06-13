@@ -1,14 +1,13 @@
 package com.green.todoapp.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
-public class TodoVo {
+@Data
+public class TodoEntity {
     private int itodo;
     private String ctnt;
     private String createdAt;
+    private int delYn;
     private String pic;
     private int finishYn;
     private String finishedAt;

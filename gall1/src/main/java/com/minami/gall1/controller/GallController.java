@@ -1,5 +1,6 @@
 package com.minami.gall1.controller;
 
+import com.minami.gall1.model.PageVo;
 import com.minami.gall1.model.PostInsDto;
 import com.minami.gall1.model.PostSelDto;
 import com.minami.gall1.service.GallService;
@@ -26,17 +27,22 @@ public class GallController {
 
     @GetMapping("/lists")
     public String getPost(Model model, @RequestParam int id, @RequestParam(defaultValue = "1") int page,
-                          @RequestParam(defaultValue = "50", name = "list-num") int listNum) {
+                          @RequestParam(defaultValue = "50", name = "list-num") int listNum,
+                          @RequestParam(defaultValue = "all", name = "exception-mode") String exceptionMode) {
         PostSelDto dto = new PostSelDto();
         dto.setPage(page);
         dto.setGallId(id);
         dto.setListNum(listNum);
 
+        PageVo vo = PageVo.builder()
+                .postCount(postService.getPostCount(id))
+                .nowPage(page)
+                .maxPage(postService.getMaxPage(dto))
+                .listNum(listNum).build();
+
         model.addAttribute("gallInfo", service.selGallInfoById(id));
         model.addAttribute("postList", postService.selPostByGallId(dto));
-        model.addAttribute("nowPage", page);
-        model.addAttribute("maxPage", postService.getMaxPage(dto));
-        model.addAttribute("postCount", postService.getPostCount(id));
+        model.addAttribute("pageInfo", vo);
         return "gallMain";
     }
 
@@ -44,6 +50,14 @@ public class GallController {
     public String writePost(Model model, @RequestParam int id) {
         model.addAttribute("gallInfo", service.selGallInfoById(id));
         return "writePost";
+    }
+
+    @GetMapping("/view")
+    public String getPostView(Model model, @RequestParam int id, @RequestParam(defaultValue = "1") int page,
+                              @RequestParam(defaultValue = "50", name = "list-num") int listNum,
+                              @RequestParam(defaultValue = "all", name = "exception-mode") String exceptionMode,
+                              @RequestParam int no) {
+        return "postView";
     }
 
     @PostMapping("/write")

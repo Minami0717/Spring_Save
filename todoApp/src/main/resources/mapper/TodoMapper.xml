@@ -4,9 +4,29 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.green.todoapp.TodoMapper">
 
-    <insert id="insTodo">
+    <insert id="insTodo" useGeneratedKeys="true" keyProperty="itodo">
         insert t_todo
         set ctnt = #{ctnt}
     </insert>
+
+    <select id="selTodo">
+        select itodo, ctnt, created_at createdAt, pic,
+            finish_yn finishYn, finished_at finishedAt
+        from t_todo
+        where del_yn = 0
+    </select>
+
+    <update id="delTodo">
+        update t_todo
+        set del_yn = 1
+        where itodo = #{itodo}
+    </update>
+
+    <update id="updTodo">
+        update t_todo
+        set finish_yn = 1,
+            finished_at = current_timestamp
+        where itodo = #{itodo}
+    </update>
 
 </mapper>
