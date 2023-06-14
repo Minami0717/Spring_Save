@@ -33,7 +33,11 @@
     </select>
 
     <select id="selPostDetail" resultType="PostDetailVo">
-
+        select id, gall_id gallId, title, content,  writer,
+            created_at createdAt, hits, reco_num recoNum,
+            deco_num decoNum, pw
+        from post
+        where id = #{no}
     </select>
 
     <insert id="insPost">

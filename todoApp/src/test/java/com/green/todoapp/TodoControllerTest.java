@@ -1,6 +1,8 @@
 package com.green.todoapp;
 
+import com.google.gson.Gson;
 import com.green.todoapp.model.TodoInsDto;
+import com.green.todoapp.model.TodoUpdDto;
 import com.green.todoapp.model.TodoVo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -38,10 +41,15 @@ class TodoControllerTest {
     @DisplayName("TODO - 등록")
     void postTodo() throws Exception {
         //given - 테스트 세팅
-        given(service.insTodo(any(TodoInsDto.class))).willReturn(3);
+        given(service.insTodo(any(TodoInsDto.class))).willReturn(300);
 
         //when - 실제 실행
-        String json = "{ \"ctnt\": \"work\" }";
+        TodoInsDto dto = new TodoInsDto();
+        dto.setCtnt("work");
+
+        //String json = "{ \"ctnt\": \"work\" }";
+        Gson gson = new Gson();
+        String json = gson.toJson(dto);
 
         ResultActions ra = mvc.perform(post("/api/todo")
                     .content(json)
@@ -49,7 +57,7 @@ class TodoControllerTest {
 
         //then - 검증
         ra.andExpect(status().isOk())
-        .andExpect(content().string("3"))
+        .andExpect(content().string("300"))
         .andDo(print());
 
         verify(service).insTodo(any());
@@ -77,5 +85,49 @@ class TodoControllerTest {
                 .andDo(print());
 
         verify(service).selTodo();
+    }
+
+    @Test
+    @DisplayName("TODO - 완료 처리 토글")
+    void patchTodo() throws Exception {
+        //given - 테스트 세팅
+        given(service.updTodo(any())).willReturn(1);
+
+        //when - 실제 실행
+        TodoUpdDto dto = new TodoUpdDto();
+        dto.setItodo(1);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(dto);
+
+        ResultActions ra = mvc.perform(patch("/api/todo")
+                .content(json)
+                .contentType(MediaType.APPLICATION_JSON));
+
+        //then - 검증
+        ra.andExpect(status().isOk())
+                .andExpect(content().string("1"))
+                .andDo(print());
+
+        verify(service).updTodo(any());
+    }
+
+    @Test
+    @DisplayName("TODO - 삭제")
+    void delTodo() throws Exception {
+        //given - 테스트 세팅
+        int itodo = 1;
+        given(service.delTodo(anyInt())).willReturn(itodo);
+
+        //when - 실제 실행
+        ResultActions ra = mvc.perform(delete("/api/todo")
+                .param("itodo", String.valueOf(itodo)));
+
+        //then - 검증
+        ra.andExpect(status().isOk())
+                .andExpect(content().string(String.valueOf(itodo)))
+                .andDo(print());
+
+        verify(service).delTodo(anyInt());
     }
 }

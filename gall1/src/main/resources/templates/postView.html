@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/gallMain.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/postView.css}">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script th:inline="javascript">
-        function changeListNum(listNum) {
-            const gallId = [[${gallInfo.id}]];
-            location.href = '/board/lists?id=' + gallId + '&list-num=' + listNum;
-        }
-
         $(function () {
             $("header").load("../header");
         })
@@ -18,126 +13,174 @@
         let sub = document.getElementsByTagName("#intro_box span");
         if(sub.value === "없음")
             sub.style.color = "#999";
+
+        $(function() {
+            $(".reTop button").on("click", function() {
+                $("#tiv").toggle();
+
+                if ($(".reTop button b").text() == "댓글닫기") {
+                    $(".reTop button b").text("댓글열기")
+                    $(".reTop button img").attr("src","/image/down.png")
+                }
+                else {
+                    $(".reTop button b").text("댓글닫기")
+                    $(".reTop button img").attr("src","/image/arrow-up.png")
+                }
+            });
+
+            $(".reBot button").on("click", function() {
+                $("#tiv").toggle();
+
+                if ($(".reTop button b").text() == "댓글닫기") {
+                    $(".reTop button b").text("댓글열기")
+                    $(".reTop button img").attr("src","/image/down.png")
+                }
+            });
+        });
     </script>
 </head>
 <body>
-<header></header>
-<main>
-    <section>
+    <header></header>
+    <main>
         <div id=header>
             <h2><a th:href="@{lists(id = ${gallInfo.id})}" th:text="${gallInfo.name}"></a></h2>
         </div>
-        <div id=intro_box class=top_box>
-            <div>
-                <div id=no_img><img th:src="@{/image/no-pictures.png}" id=null></div>
-                <!--					<img th:src="@{/image/}" class=left>-->
-                <p th:text="${gallInfo.intro}">
+        <div id=post>
+            <div id=head>
+                <b th:text="${postDetail.title}"></b><br>
+                <p id=sub>
+                    <span class=click th:text="${postDetail.writer}"></span>
+                    <span id=ip class=click th:text="'('+${ip}+')'"></span>
+    <!--                    <a href=#><img th:src="@{/image/fix_nik.gif}"></a>-->
+    <!--                    <a href=#><img th:src="@{/image/nik.gif}"></a>-->
+                    <span th:text="${postDetail.createdAt}"></span>
+                </p>
+                <p class="right">
+                    <span th:text="'조회 ' + ${postDetail.hits}"></span> |
+                    <span th:text="'추천 ' + ${postDetail.recoNum}"></span> |
+                    <a href=#reply th:text="'댓글 ' + ${postDetail.cmtNum}"></a>
+                </p>
             </div>
-            <div>
-                <div>
-                    <strong>매니저</strong>
-                    <span th:text="${gallInfo.admin}"></span>
-                </div>
-                <div>
-                    <strong>부매니저</strong>
-                    <span th:text="${gallInfo.subAdmin}"></span>
-                </div>
-                <div>
-                    <strong>개설일</strong>
-                    <span th:text="${gallInfo.createdAt}"></span>
-                </div>
-                <div><button id=report class=main_color>갤러리 관리 내역</button></div>
+            <div id=con th:text="${postDetail.content}"></div>
+            <div id=rec>
+                <span th:text="${postDetail.recoNum}"></span>
+    <!--                <button onclick="location.href='reco.jsp?reco=re&idx=<%= idx %>&p_idx=<%=p_idx %>'">-->
+    <!--                    <img th:src="@{/image/star3.png}"><p>추천-->
+    <!--                </button>-->
+                <button onclick="location.href=''">
+                    <img th:src="@{/image/star2.png}"><p>추천
+                </button>
+                <button onclick="location.href=''">
+                    <img th:src="@{/image/down-arrow.png}"><p>비추
+                </button>
+                <span th:text="${postDetail.decoNum}"></span>
             </div>
         </div>
-        <!--			<div id=issue_box class=top_box>-->
-        <!--				<ul>-->
-        <!--					<li>-->
-        <!--						<a href=><%=list.get(n[i]).getTitle() %></a>-->
-        <!--						<span class=right><%=list.get(n[i]).getWriter() %></span>-->
-        <!--					</li>-->
-        <!--				</ul>-->
-        <!--				<div>-->
-        <!--					<a href=><img th:src="@{/image/image12.jpg}" align=top></a>-->
-        <!--					<div class=inline>-->
-        <!--						<p><a href=><b><%=list.get(num).getTitle() %></b></a>-->
-        <!--						<p><a href=><%=list.get(num).getContent() %></a>-->
-        <!--						<p><b>작성자</b> : <%=list.get(num).getWriter() %>-->
-        <!--					</div>-->
-        <!--				</div>-->
-        <!--			</div>-->
-        <div id=mid>
-            <button th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id})}'|">전체글</button>
-            <button class=white th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id}, exception_mode = recommend)}'|">추천글</button>
-            <button class=white th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id}, exception_mode = notice)}'|">공지</button>
-
-            <!--				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
-            <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
-            <!--				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>-->
-
-            <!--				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
-            <!--				<button class=white onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
-            <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>-->
-            <div class=right>
-                <div class=right th:onclick="|location.href='@{/board/write(id = ${gallInfo.id})}'|">
-                    <img th:src="@{/image/pencil2.png}">글쓰기
+        <div id=reply>
+            <div class="reTop" id=left>
+                전체 댓글 <span th:text="${postDetail.cmtNum}"></span>개
+                <select>
+                    <option>등록순
+                    <option>최신순
+                    <option>답글순
+                </select>
+            </div>
+            <div class="reTop right">
+                <a href=#header><b>본문 보기</b></a> &nbsp;|&nbsp;
+                <button><b>댓글닫기</b> <img th:src="@{/image/arrow-up.png}"></button> &nbsp;|&nbsp;
+                <a href=#reply><b>새로고침</b></a>
+            </div>
+            <div id=tiv th:if="${postDetail.cmt.size() > 0}">
+                <ul>
+                    <li th:each="cmt : ${postDetail.cmt}">
+                        <span th:text="${cmt.writer}"></span>
+                        <span th:text="${cmt.content}"></span>
+                        <span th:text="${#temporals.format(cmt.createdAt, 'MM.dd HH:mm:ss')}"></span>
+<!--                        <button id=del><img th:src="@{/image/close.png}"></button>-->
+                    </li>
+                </ul>
+                <div id=delCheck>
+                    <input id=pc type=password placeholder=비밀번호>
+                    <button id=check>확인</button><button id=x>X</button>
                 </div>
-                <form>
-                    <select class=right onchange=changeListNum(this.value)>
-                        <option value="30">30개
-                        <option value="50" selected>50개
-                        <option value="100">100개
-                    </select>
+                <div class="reBot right">
+                    <a href=#header><b>본문 보기</b></a> &nbsp;|&nbsp;
+                    <button><b>댓글닫기</b> <img th:src="@{/image/arrow-up.png}"></button> &nbsp;|&nbsp;
+                    <a href=#reply><b>새로고침</b></a>
+                </div>
+            </div>
+            <div id=text>
+                <form action="cmt" method=post>
+                    <div id=np>
+                        <input type="hidden" name=postId th:value="${postDetail.id}">
+                        <input type="hidden" name=gallId th:value="${gallInfo.id}">
+                        <input type=text placeholder=닉네임 name=writer><br>
+                        <input type=password placeholder=비밀번호 name=pw>
+    <!--                        <input type=text placeholder=닉네임 name=nickname value=<%=session.getAttribute("nick") %> readonly><br>-->
+    <!--                        <input type=hidden name=pw value=<%=session.getAttribute("pw") %>-->
+                    </div>
+                    <div id=ta><textarea name=content></textarea></div>
+                    <div align=right><input type=submit value=등록></div>
                 </form>
             </div>
         </div>
-        <table>
-            <thead>
-            <tr>
-                <th width=50px>번호
-                <th>제목
-                <th width=100px>글쓴이
-                <th width=80px>작성일
-                <th width=50px>조회
-                <th width=50px>추천
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="post, i : ${postList}">
-                <td th:text="${pageInfo.postCount - (((pageInfo.nowPage - 1) * pageInfo.listNum) + i.index)}">
-                <td align=left>
-                    <a href="" th:text="${post.title}">
-                        <img th:src="@{/image/chat.png}">
-                    </a>
-                    <a href="" th:text="'['+${post.cmtNum}+']'"></a>
-                <td id=w th:text="${post.writer}">
-                    <!--					<span></span>-->
-                    <!--					<a href=#><img th:src="@{/image/fix_nik.gif}"></a>-->
-                    <!--					<a href=#><img th:src="@{/image/nik.gif}"></a>-->
-                <td th:text="${#temporals.format(post.createdAt, 'HH:mm')}">
-                <td th:text="${post.hits}">
-                <td th:text="${post.recoNum}">
-            </tbody>
-        </table>
-        <div id=bot>
-            <button onclick="location.href=''">전체글</button>
-            <button class="ns" onclick="location.href=''">추천글</button>
-
-            <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
+        <div>
+            <button th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id})}'|">전체글</button>
+            <button class=ns th:onclick="|location.href='@{/board/lists(id = ${gallInfo.id}, exception_mode = recommend)}'|">추천글</button>
+            <!--				<button class=ns onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
             <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
-
-            <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
-            <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
-
             <button class=right th:onclick="|location.href='@{/board/write(id = ${gallInfo.id})}'|">글쓰기</button>
+            <button class=right id=delete th:onclick="|location.href='@{/board/del(id = ${gallInfo.id})}'|">삭제</button>
+            <button class=right id=edit th:onclick="|location.href='@{/board/upd(id = ${gallInfo.id})}'|">수정</button>
         </div>
-        <th:block th:each="page : ${#numbers.sequence(1, pageInfo.maxPage)}">
-            <a th:if="${page != pageInfo.nowPage}"
-               th:href="@{/board/lists(id = ${gallInfo.id}, page = ${page}, list-num = ${pageInfo.listNum})}"
-               th:text="${page}"></a>
-            <strong th:if="${page == pageInfo.nowPage}" th:text="${page}" style="color: red"></strong>
-        </th:block>
-    </section>
-    <aside>
+        <div id="bot">
+            <table>
+                <thead>
+                <tr>
+                    <th width=50px>번호
+                    <th>제목
+                    <th width=100px>글쓴이
+                    <th width=80px>작성일
+                    <th width=50px>조회
+                    <th width=50px>추천
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="post, i : ${postList}">
+                    <td th:text="${pageInfo.postCount - (((pageInfo.nowPage - 1) * pageInfo.listNum) + i.index)}">
+                    <td align=left>
+                        <a th:href="@{view(id = ${gallInfo.id}, no = ${post.id})}" th:text="${post.title}">
+                            <img th:src="@{/image/chat.png}">
+                        </a>
+                        <a th:href="@{view(id = ${gallInfo.id}, no = ${post.id})}" th:text="'['+${post.cmtNum}+']'"></a>
+                    <td id=w th:text="${post.writer}">
+                        <!--					<span></span>-->
+                        <!--					<a href=#><img th:src="@{/image/fix_nik.gif}"></a>-->
+                        <!--					<a href=#><img th:src="@{/image/nik.gif}"></a>-->
+                    <td th:text="${#temporals.format(post.createdAt, 'HH:mm')}">
+                    <td th:text="${post.hits}">
+                    <td th:text="${post.recoNum}">
+                </tbody>
+            </table>
+            <div>
+                <button onclick="location.href=''">전체글</button>
+                <button class="ns" onclick="location.href=''">추천글</button>
+
+                <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
+                <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
+
+                <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>'">전체글</button>-->
+                <!--				<button class="ns" onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=reco'">추천글</button>-->
+
+                <button class=right th:onclick="|location.href='@{/board/write(id = ${gallInfo.id})}'|">글쓰기</button>
+            </div>
+            <th:block th:each="page : ${#numbers.sequence(1, pageInfo.maxPage)}">
+                <a th:if="${page != pageInfo.nowPage}"
+                   th:href="@{/board/lists(id = ${gallInfo.id}, page = ${page}, list-num = ${pageInfo.listNum})}"
+                   th:text="${page}"></a>
+                <strong th:if="${page == pageInfo.nowPage}" th:text="${page}" style="color: red"></strong>
+            </th:block>
+        </div>
         <div id=login>
             <p><a href=>로그인해 주세요.</a>
             <div>
@@ -154,7 +197,6 @@
             <!--					<a href=#><img th:src="@{/image/bell.png}"> 알림</a>-->
             <!--				</div>-->
         </div>
-    </aside>
-</main>
+    </main>
 </body>
 </html>

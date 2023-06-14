@@ -12,6 +12,6 @@ import java.util.List;
 public interface TodoMapper {
     int insTodo(TodoEntity entity);
     List<TodoVo> selTodo();
-    int updTodo(TodoUpdDto dto);
-    int delTodo(TodoUpdDto dto);
+    int updTodo(TodoEntity entity);
+    int delTodo(int itodo);
 }

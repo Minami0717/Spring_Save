@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @Controller
 @RequestMapping("/board")
 public class GallController {
@@ -56,7 +59,23 @@ public class GallController {
     public String getPostView(Model model, @RequestParam int id, @RequestParam(defaultValue = "1") int page,
                               @RequestParam(defaultValue = "50", name = "list-num") int listNum,
                               @RequestParam(defaultValue = "all", name = "exception-mode") String exceptionMode,
-                              @RequestParam int no) {
+                              @RequestParam int no) throws UnknownHostException {
+        PostSelDto dto = new PostSelDto();
+        dto.setPage(page);
+        dto.setGallId(id);
+        dto.setListNum(listNum);
+
+        PageVo vo = PageVo.builder()
+                .postCount(postService.getPostCount(id))
+                .nowPage(page)
+                .maxPage(postService.getMaxPage(dto))
+                .listNum(listNum).build();
+
+        model.addAttribute("gallInfo", service.selGallInfoById(id));
+        model.addAttribute("postList", postService.selPostByGallId(dto));
+        model.addAttribute("pageInfo", vo);
+        model.addAttribute("postDetail", postService.selPostDetail(no));
+        model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress().substring(0, 7));
         return "postView";
     }
 

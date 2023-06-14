@@ -23,8 +23,7 @@ public class TodoService {
         TodoEntity entity = new TodoEntity();
         entity.setCtnt(dto.getCtnt());
 
-        int result = mapper.insTodo(entity);
-        return result == 0 ? -1 : entity.getItodo();
+        return mapper.insTodo(entity) == 0 ? -1 : entity.getItodo();
     }
 
     public List<TodoVo> selTodo() {
@@ -32,10 +31,13 @@ public class TodoService {
     }
 
     public int updTodo(TodoUpdDto dto) {
-        return mapper.updTodo(dto);
+        TodoEntity entity = new TodoEntity();
+        entity.setItodo(dto.getItodo());
+
+        return mapper.updTodo(entity) == 0 ? -1 : entity.getFinishYn();
     }
 
-    public int delTodo(TodoUpdDto dto) {
-        return mapper.delTodo(dto);
+    public int delTodo(int itodo) {
+        return mapper.delTodo(itodo);
     }
 }

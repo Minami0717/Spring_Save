@@ -1,10 +1,7 @@
 package com.minami.gall1.service;
 
 import com.minami.gall1.mapper.PostMapper;
-import com.minami.gall1.model.BestPostVo;
-import com.minami.gall1.model.PostInsDto;
-import com.minami.gall1.model.PostSelDto;
-import com.minami.gall1.model.PostVo;
+import com.minami.gall1.model.*;
 import com.minami.gall1.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,5 +56,13 @@ public class PostService {
 
     public int getPostCount(int gallId) {
         return mapper.selPostCount(gallId);
+    }
+
+    public PostDetailVo selPostDetail(int id) {
+        PostDetailVo vo = mapper.selPostDetail(id);
+        vo.setCmtNum(cmtService.selCmtNum(vo.getId()));
+        vo.setCmt(cmtService.selCmtByPostId(id));
+
+        return vo;
     }
 }

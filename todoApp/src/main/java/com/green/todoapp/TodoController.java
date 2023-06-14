@@ -34,7 +34,7 @@ public class TodoController {
     }
 
     @DeleteMapping
-    public int delTodo(@RequestBody TodoUpdDto dto) {
-        return service.delTodo(dto);
+    public int delTodo(@RequestParam int itodo) {
+        return service.delTodo(itodo);
     }
 }

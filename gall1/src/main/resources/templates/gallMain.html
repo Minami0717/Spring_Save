@@ -105,7 +105,7 @@
 				<tr th:each="post, i : ${postList}">
 					<td th:text="${pageInfo.postCount - (((pageInfo.nowPage - 1) * pageInfo.listNum) + i.index)}">
 					<td align=left>
-						<a href="" th:text="${post.title}">
+						<a th:href="@{view(id = ${gallInfo.id}, no = ${post.id})}" th:text="${post.title}">
 							<img th:src="@{/image/chat.png}">
 						</a>
 						<a href="" th:text="'['+${post.cmtNum}+']'"></a>

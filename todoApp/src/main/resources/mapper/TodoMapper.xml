@@ -23,9 +23,13 @@
     </update>
 
     <update id="updTodo">
+        <selectKey keyProperty="finishYn" resultType="TodoEntity" order="AFTER">
+            select finish_yn finishYn from t_todo where itodo = #{itodo}
+        </selectKey>
+
         update t_todo
-        set finish_yn = 1,
-            finished_at = current_timestamp
+        set finish_yn = 1 - finish_yn,
+            finished_at = if(finished_at is null, current_timestamp, null)
         where itodo = #{itodo}
     </update>
 
