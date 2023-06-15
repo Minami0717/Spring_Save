@@ -61,16 +61,19 @@
                     <a href=#reply th:text="'댓글 ' + ${postDetail.cmtNum}"></a>
                 </p>
             </div>
+            <div id="img_box" th:each="img : ${postDetail.imgList}">
+                <img th:src="@{${img}}">
+            </div>
             <div id=con th:text="${postDetail.content}"></div>
             <div id=rec>
                 <span th:text="${postDetail.recoNum}"></span>
     <!--                <button onclick="location.href='reco.jsp?reco=re&idx=<%= idx %>&p_idx=<%=p_idx %>'">-->
     <!--                    <img th:src="@{/image/star3.png}"><p>추천-->
     <!--                </button>-->
-                <button onclick="location.href=''">
+                <button th:onclick="|location.href='@{/board/updReco(id = ${gallInfo.id}, no = ${postDetail.id})}'|">
                     <img th:src="@{/image/star2.png}"><p>추천
                 </button>
-                <button onclick="location.href=''">
+                <button th:onclick="|location.href='@{/board/updDeco(id = ${gallInfo.id}, no = ${postDetail.id})}'|">
                     <img th:src="@{/image/down-arrow.png}"><p>비추
                 </button>
                 <span th:text="${postDetail.decoNum}"></span>
@@ -114,12 +117,12 @@
                     <div id=np>
                         <input type="hidden" name=postId th:value="${postDetail.id}">
                         <input type="hidden" name=gallId th:value="${gallInfo.id}">
-                        <input type=text placeholder=닉네임 name=writer><br>
-                        <input type=password placeholder=비밀번호 name=pw>
+                        <input type=text placeholder=닉네임 name=writer required><br>
+                        <input type=password placeholder=비밀번호 name=pw required>
     <!--                        <input type=text placeholder=닉네임 name=nickname value=<%=session.getAttribute("nick") %> readonly><br>-->
     <!--                        <input type=hidden name=pw value=<%=session.getAttribute("pw") %>-->
                     </div>
-                    <div id=ta><textarea name=content></textarea></div>
+                    <div id=ta><textarea name=content required></textarea></div>
                     <div align=right><input type=submit value=등록></div>
                 </form>
             </div>

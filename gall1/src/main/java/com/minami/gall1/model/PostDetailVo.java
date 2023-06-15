@@ -19,8 +19,10 @@ public class PostDetailVo {
     private final int recoNum;
     private final int decoNum;
     private final String pw;
+    private final String imgPath;
     private int cmtNum;
     private List<CmtVo> cmt;
+    private List<String> imgList;
 
     public void setCmtNum(int cmtNum) {
         this.cmtNum = cmtNum;
@@ -28,5 +30,9 @@ public class PostDetailVo {
 
     public void setCmt(List<CmtVo> cmt) {
         this.cmt = cmt;
+    }
+
+    public void setImgList(List<String> imgList) {
+        this.imgList = imgList;
     }
 }

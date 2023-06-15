@@ -33,10 +33,10 @@
 					<div>
 						<h4><a href=#>실시간 베스트<img th:src="@{/image/check.png}"></a></h4>
 		                <h4><a href=#>실베<span>라이트</span><img th:src="@{/image/check2.png}"></a></h4>
-		                <h5><a href=/board/lists?id=1>실갤<img th:src="@{/image/play2.png}" id="s"></a></h5>
+		                <h5><a href=/board/lists?id=1>실갤<img th:src="@{/image/play.png}" id="s"></a></h5>
 					</div>
 					<ul>
-						<li th:onclick="|location.href='@{/board/lists(id = ${post.gallId})}'|" th:each="post : ${postList}">
+						<li th:onclick="|location.href='@{/board/view(id = ${post.gallId}, no = ${post.id})}'|" th:each="post : ${postList}">
 							<div>
 								<a th:text="${post.title}"></a>
 								<span id=rn th:text="'['+${post.cmtNum} + ']'">[]</span>

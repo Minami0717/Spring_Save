@@ -14,36 +14,36 @@ aside {
     float: right;
     width: 270px;
 }
-h2 a {color: #d2af8a}
+h2 a {color: #3b4890}
 
-table {width: 100%; text-align: center; border-bottom: 1px solid #d2af8a; border-spacing: 0; font-size: 13px;
+table {width: 100%; text-align: center; border-bottom: 1px solid #3b4890; border-spacing: 0; font-size: 13px;
     border-collapse: collapse;}
 table span {font-size: 11px; color: #999;}
 table img {height: 13px; margin-right: 10px;}
 
-th {border-bottom: 1px solid #d2af8a; border-top: 2px solid #d2af8a; height: 37px;}
+th {border-bottom: 1px solid #3b4890; border-top: 2px solid #3b4890; height: 37px;}
 td {height: 25px; vertical-align: middle; border-top: 1px solid gainsboro;}
 td[align=left] a:last-of-type {color: #999;}
 
 #w {cursor: pointer;}
 
-#mid button {width: 82px; height: 32px; background: #d2af8a; color: white; border: 1px solid #d2af8a; margin: 15px 0 5px;
+#mid button {width: 82px; height: 32px; background: #3b4890; color: white; border: 1px solid #3b4890; margin: 15px 0 5px;
     font-weight: bold; border-radius: 2px; cursor: pointer;}
-#mid button:hover {border-color: #d2af8a;}
+#mid button:hover {border-color: #3b4890;}
 #mid .white {background: white; color: black; border: 1px solid #ccc;}
-#mid .right div {border: 1px solid #d2af8a; font-size: 13px; color: #d2af8a; font-weight: bold; padding: 0 5px; cursor: pointer;}
+#mid .right div {border: 1px solid #3b4890; font-size: 13px; color: #3b4890; font-weight: bold; padding: 0 5px; cursor: pointer;}
 #mid img {width: 13px;}
 #mid > .right {margin-top: 27px;}
 #mid select {margin-right: 2px;}
 
-#bot button {width: 82px; height: 35px; background: #d2af8a; color: white; border: 1px solid #d2af8a; border-bottom-width: 3px;
+#bot button {width: 82px; height: 35px; background: #3b4890; color: white; border: 1px solid #3b4890; border-bottom-width: 3px;
     margin-top: 10px; margin-bottom: 40px; font-weight: bold; border-radius: 2px; cursor: pointer;}
-#bot .ns {background: white; color: #d2af8a;}
+#bot .ns {background: white; color: #3b4890;}
 #header {padding-bottom: 20px;}
 
 #issue_box ul {float: left; width: 300px;}
 #issue_box li,#issue_box p {margin-bottom: 5px;}
-#issue_box img {width: 150px; border: 1px solid #d2af8a; margin: 0 10px;}
+#issue_box img {width: 150px; border: 1px solid #3b4890; margin: 0 10px;}
 
 #intro_box img {height: 100px;}
 #intro_box p {margin-left: 12px; float: left;}
@@ -74,14 +74,14 @@ td[align=left] a:last-of-type {color: #999;}
     vertical-align: 4px;
 }
 
-#login {border: 1px solid #d2af8a; width: 270px;}
+#login {border: 1px solid #3b4890; width: 270px;}
 #login img {height: 13px;}
 #login p {padding: 10px 20px;}
-#login p a {color: #d2af8a; font-weight: bold; font-size: 14px;}
+#login p a {color: #3b4890; font-weight: bold; font-size: 14px;}
 #login p a:hover {text-decoration: none;}
 #login div {background: #f3f3f3; padding: 10px; text-align: center;}
 #login div a {font-size: 12px; font-weight: bold;}
-#login button {width: 65px; height: 25px; background: #d2af8a; color: white; border: none; border: 1px solid #d2af8a;
+#login button {width: 65px; height: 25px; background: #3b4890; color: white; border: none; border: 1px solid #3b4890;
     margin-left: 10px; cursor: pointer; font-weight: bold; float: right;}
 
 #report {
@@ -103,4 +103,4 @@ td[align=left] a:last-of-type {color: #999;}
 }
 
 .inline {display: inline-block;}
-.top_box {border-top: 2px solid #d2af8a; border-bottom: 1px solid gainsboro; padding: 20px; font-size: 13px;}
+.top_box {border-top: 2px solid #3b4890; border-bottom: 1px solid gainsboro; padding: 20px; font-size: 13px;}

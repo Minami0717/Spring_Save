@@ -9,4 +9,5 @@ public class PostInsDto {
     private String content;
     private String writer;
     private String pw;
+    private int postId;
 }

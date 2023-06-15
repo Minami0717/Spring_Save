@@ -8,13 +8,12 @@ import com.minami.gall1.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board")
@@ -60,6 +59,8 @@ public class GallController {
                               @RequestParam(defaultValue = "50", name = "list-num") int listNum,
                               @RequestParam(defaultValue = "all", name = "exception-mode") String exceptionMode,
                               @RequestParam int no) throws UnknownHostException {
+        postService.updHits(no);
+
         PostSelDto dto = new PostSelDto();
         dto.setPage(page);
         dto.setGallId(id);
@@ -76,12 +77,31 @@ public class GallController {
         model.addAttribute("pageInfo", vo);
         model.addAttribute("postDetail", postService.selPostDetail(no));
         model.addAttribute("ip", InetAddress.getLocalHost().getHostAddress().substring(0, 7));
+
         return "postView";
     }
 
     @PostMapping("/write")
-    public String writePost(PostInsDto dto) {
-        postService.insPost(dto);
-        return "redirect:/board/lists?id=" + dto.getGallId();
+    public String writePost(List<MultipartFile> imgList, PostInsDto dto, Model model) {
+        int result = postService.insPost(imgList, dto);
+        String url = "/board/lists?id=" + dto.getGallId();
+        if (result == 0) {
+            model.addAttribute("message", "글 작성 실패");
+            model.addAttribute("url", url);
+            return "message";
+        }
+        return "redirect:" + url;
+    }
+
+    @GetMapping("/updReco")
+    public String updReco(int id, int no) {
+        postService.updReco(no);
+        return String.format("redirect:/board/view?id=%d&no=%d", id, no);
+    }
+
+    @GetMapping("/updDeco")
+    public String updDeco(int id, int no) {
+        postService.updDeco(no);
+        return String.format("redirect:/board/view?id=%d&no=%d", id, no);
     }
 }

@@ -12,4 +12,9 @@ public interface PostMapper {
     int insPost(PostInsDto dto);
     int selPostCount(int gallId);
     PostDetailVo selPostDetail(int id);
+    int updHits(int id);
+    int insPostImg(ImgInsDto dto);
+    List<String> selPostImg(int postId);
+    int updReco(int id);
+    int updDeco(int id);
 }

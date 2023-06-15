@@ -18,17 +18,17 @@
 			<h2><a th:href="@{lists(id = ${gallInfo.id})}" th:text="${gallInfo.name}"></a></h2>
 		</div>
 		<div id=outside>
-			<form action="/board/write" method=post>
+			<form action="/board/write" method=post enctype="multipart/form-data">
 				<div>
 					<input type="hidden" name="gallId" th:value="${gallInfo.id}">
-					<input type=text placeholder=닉네임 name=writer>
-					<input type=password placeholder=비밀번호 name=pw>
-
+					<input type=text placeholder=닉네임 name=writer required>
+					<input type=password placeholder=비밀번호 name=pw required>
 <!--					<input type=hidden value name=nick>-->
 <!--					<input type=hidden value name=pw>-->
 				</div>
-				<div><input type=text placeholder="제목을 입력해 주세요." name=title></div>
-				<textarea name=content></textarea><br>
+				<div><input type=text placeholder="제목을 입력해 주세요." name=title required></div>
+				<input type="file" name="imgList" multiple><br><br>
+				<textarea name=content required></textarea><br>
 				<input type=submit value=등록>
 			</form>
 			<button onclick=history.back()>취소</button>

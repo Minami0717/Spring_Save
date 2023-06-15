@@ -33,14 +33,14 @@
     </select>
 
     <select id="selPostDetail" resultType="PostDetailVo">
-        select id, gall_id gallId, title, content,  writer,
+        select id, gall_id gallId, title, content, writer,
             created_at createdAt, hits, reco_num recoNum,
-            deco_num decoNum, pw
+            deco_num decoNum, pw, img_path imgPath
         from post
         where id = #{no}
     </select>
 
-    <insert id="insPost">
+    <insert id="insPost" useGeneratedKeys="true" keyProperty="postId">
         insert post
         set gall_id = #{gallId},
             title = #{title},
@@ -48,6 +48,18 @@
             writer = #{writer},
             pw = #{pw}
     </insert>
+
+    <insert id="insPostImg">
+        insert post_img
+        set post_id = #{postId},
+            img_path = #{imgPath}
+    </insert>
+
+    <select id="selPostImg" resultType="String">
+        select img_path
+        from post_img
+        where post_id = #{postId}
+    </select>
 
     <select id="selPostCount" resultType="int">
         select count(id)
@@ -66,4 +78,21 @@
         </choose>
     </select>
 
+    <update id="updHits">
+        update post
+        set hits = hits + 1
+        where id = #{id}
+    </update>
+
+    <update id="updReco">
+        update post
+        set reco_num = reco_num + 1
+        where id = #{id}
+    </update>
+
+    <update id="updDeco">
+        update post
+        set deco_num = deco_num + 1
+        where id = #{id}
+    </update>
 </mapper>

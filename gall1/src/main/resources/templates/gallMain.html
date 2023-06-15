@@ -79,9 +79,9 @@
 <!--				<button onclick="location.href='gallMain.jsp?idx=<%=idx%>&post=notice'">공지</button>-->
 				<div class=right>
 					<div class=right th:onclick="|location.href='@{/board/write(id = ${gallInfo.id})}'|">
-						<img th:src="@{/image/pencil2.png}">글쓰기
+						<img th:src="@{/image/pencil.png}">글쓰기
 					</div>
-					<form>
+					<form style="display: inline">
 						<select class=right onchange=changeListNum(this.value)>
 							<option value="30">30개
 							<option value="50" selected>50개
