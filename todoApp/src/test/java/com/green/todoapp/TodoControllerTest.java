@@ -71,6 +71,9 @@ class TodoControllerTest {
         mockList.add(new TodoVo(1, "test", "2023-06-13", null, 1, "2023-05-05"));
         mockList.add(new TodoVo(2, "test2", "2023-06-15", "abc.jpg", 0, null));
 
+        Gson gson = new Gson();
+        String json = gson.toJson(mockList);
+
         given(service.selTodo()).willReturn(mockList);
 
         //when - 실제 실행
@@ -78,10 +81,7 @@ class TodoControllerTest {
 
         //then - 검증
         ra.andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(mockList.size())))
-                .andExpect(jsonPath("$[*].itodo").exists())
-                .andExpect(jsonPath("$[0].itodo").value(1))
-                .andExpect(jsonPath("$[0].ctnt").value("test"))
+                .andExpect(content().json(json))
                 .andDo(print());
 
         verify(service).selTodo();

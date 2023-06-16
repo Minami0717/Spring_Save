@@ -33,7 +33,7 @@ public class BoardService {
         if (result == 1) {
             return entity.getIboard();
         }
-        return result;
+        return -1;
     }
 
     public List<BoardVo> selBoard(BoardSelDto dto) {
@@ -44,15 +44,7 @@ public class BoardService {
     public int getMaxpage(BoardRowDto dto) {
         BoardCntVo vo = mapper.selBoardCount();
 
-        int cnt = vo.getCnt();
-        int row = dto.getRow();
-        int maxPage = cnt / row;
-
-        if (cnt % row != 0) {
-            return maxPage + 1;
-        }
-
-        return maxPage;
+        return (int) Math.ceil((double) vo.getCnt() / dto.getRow());
     }
 
     public BoardDetailRes selBoardById(BoardIdDto dto) {

@@ -1,5 +1,6 @@
 package com.green.todoapp;
 
+import com.google.gson.Gson;
 import com.green.todoapp.model.TodoEntity;
 import com.green.todoapp.model.TodoInsDto;
 import com.green.todoapp.model.TodoUpdDto;
@@ -53,12 +54,14 @@ class TodoServiceTest {
         mockList.add(new TodoVo(1, "test", "2023-06-13", null, 1, "2023-05-05"));
         mockList.add(new TodoVo(2, "test2", "2023-06-15", "abc.jpg", 0, null));
 
+        Gson gson = new Gson();
+
         //when
         when(mapper.selTodo()).thenReturn(mockList);
         List<TodoVo> result = service.selTodo();
 
         //then
-        assertEquals(mockList, result);
+        assertEquals(gson.toJson(mockList), gson.toJson(result));
         verify(mapper).selTodo();
     }
 
