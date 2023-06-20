@@ -38,8 +38,7 @@
     </update>
 
     <select id="checkIuser">
-        select *
-        from t_user
+        select * from t_user
         where iuser = #{iuser} and upw = #{upw}
     </select>
 

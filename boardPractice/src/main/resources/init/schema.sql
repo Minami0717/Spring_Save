@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `t_board_cmt`;
+DROP TABLE IF EXISTS `t_board`;
 DROP TABLE IF EXISTS `t_user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -15,7 +17,6 @@ CREATE TABLE `t_user` (
                           UNIQUE KEY `uid` (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `t_board`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_board` (
@@ -30,7 +31,6 @@ CREATE TABLE `t_board` (
                            CONSTRAINT `t_board_ibfk_1` FOREIGN KEY (`iuser`) REFERENCES `t_user` (`iuser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS `t_board_cmt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `t_board_cmt` (

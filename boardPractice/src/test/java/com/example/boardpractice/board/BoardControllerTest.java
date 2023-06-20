@@ -137,7 +137,6 @@ class BoardControllerTest {
         //given - 테스트 세팅
         given(service.delBoard(any())).willReturn(1);
 
-        //when - 실제 실행
         BoardDelDto dto = new BoardDelDto();
         dto.setIuser(5);
         dto.setIboard(6);
@@ -145,6 +144,7 @@ class BoardControllerTest {
         Gson gson = new Gson();
         String json = gson.toJson(dto);
 
+        //when - 실제 실행
         ResultActions ra = mvc.perform(delete("/board")
                 .content(json)
                 .contentType(MediaType.APPLICATION_JSON));

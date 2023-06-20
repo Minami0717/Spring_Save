@@ -24,7 +24,7 @@ public class CmtService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return 0;
+        return -1;
     }
 
     public int updCmt(CmtEntity entity) {
