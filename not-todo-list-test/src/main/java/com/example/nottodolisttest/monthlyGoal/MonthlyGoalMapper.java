@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper
 public interface MonthlyGoalMapper {
     int insMonthlyGoal(MonthlyGoalEntity entity);
-    int updMonthlyGoal(MonthlyGoalUpdDto dto);
+    int updMonthlyGoal(MonthlyGoalEntity entity);
     int insNotTodo(NotTodoEntity entity);
     List<MonthlyGoalVo> selMonthlyGoal(String monthYear);
-    String selNotTodo(String name);
+    int selNotTodoId(String name);
 }
