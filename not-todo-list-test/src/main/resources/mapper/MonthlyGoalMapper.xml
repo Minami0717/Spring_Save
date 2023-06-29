@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper">
+
+    <insert id="insMonthlyGoal" useGeneratedKeys="true" keyProperty="goalId">
+        insert t_monthly_goal
+        set not_todo_id = #{notTodoId},
+            cost_category = #{costCategory},
+            goal_cost = #{goalCost},
+            month_year = #{monthYear},
+            save_cost = #{goalCost}
+    </insert>
+
+    <update id="updMonthlyGoal">
+        update t_monthly_goal
+        set cost_category = #{costCategory},
+            goal_cost = #{goalCost},
+            save_cost = #{goalCost}
+        where goal_id = #{goalId}
+    </update>
+
+    <insert id="insNotTodo" useGeneratedKeys="true" keyProperty="notTodoId">
+        insert t_not_todo
+        set name = #{name}
+    </insert>
+
+    <select id="selMonthlyGoal">
+        select A.goal_id goalId, B.name, A.goal_cost goalCost,
+            A.month_year monthYear
+        from t_monthly_goal A
+        inner join t_not_todo B
+        on A.not_todo_id = B.not_todo_id
+        where A.month_year = #{monthYear}
+    </select>
+
+    <select id="selNotTodo">
+        select name
+        from t_not_todo
+        where name = #{name}
+    </select>
+
+</mapper>

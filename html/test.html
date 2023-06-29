@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>시계</title>
+    <script type="text/javascript">
+        let dayMoney = 10000;
+        function printTime() {
+            const date = new Date();
+            const money = document.getElementById("money");
+            let saveMoney = (dayMoney / 86400) * (date.date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds());
+            money.innerHTML = saveMoney + "원";
+
+            setTimeout("printTime()",1000); //1초후에 printTime()을 호출
+
+        }
+
+        function useMoney() {
+
+        }
+
+        window.onload = function() { //HTML이 로딩되면 printTime()함수를 호출
+            printTime();
+        }
+    </script>
+</head>
+<body>
+현재 절약한 돈은 <span id="money"></span> 입니다.
+사용한 돈 <input type="number">
+<button onclick="useMoney()">입력</button>
+</body>
+</html>
