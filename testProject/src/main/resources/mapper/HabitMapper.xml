@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.testproject.habit.HabitMapper">
+
+    <insert id="insHabit">
+        insert habit
+        set name = #{name},
+            month_cost = #{monthCost},
+            day_time = #{dayTime},
+            category_id = #{categoryId}
+    </insert>
+
+    <select id="selHabit">
+        select habit_id habitId, name, month_cost monthCost,
+            day_time dayTime, input_time inputTime
+        from habit
+    </select>
+
+    <update id="updHabit">
+        update habit
+        set name = #{name},
+            month_cost = #{monthCost},
+            day_time = #{dayTime},
+            category_id = #{categoryId}
+    </update>
+
+    <insert id="insUseList">
+        insert use_list
+        set habit_id = #{habitId},
+            use_money = #{useMoney}
+    </insert>
+
+    <select id="selUseList">
+        select B.name habit, A.use_money useMoney
+        from use_list A
+        inner join habit B
+        on A.habit_id = B.habit_id
+    </select>
+
+</mapper>

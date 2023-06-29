@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:inline="javascript">
+        const habitList = [[${habitList.get(0).monthCost}]]
+        console.log(habitList);
+        let monthMoney = 30000;
+        let saveMoney = 0;
+        function printTime() {
+            const secondsByDay = 86400;
+            const date = new Date();
+            const lastDay = new Date(2023, 6, 0).getDate();
+            const money = document.getElementById("money");
+            const surplusSecondsByDay = secondsByDay - (date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds());
+            const surplusSecondsByMonth = secondsByDay * (lastDay - date.getDay()) + surplusSecondsByDay
+            const plusBySeconds = monthMoney / surplusSecondsByMonth;
+
+            saveMoney += monthMoney / surplusSecondsByMonth;
+            money.innerHTML = saveMoney + "원";
+
+            setTimeout("printTime()",1000); //1초후에 printTime()을 호출
+
+        }
+
+        // window.onload = function() { //HTML이 로딩되면 printTime()함수를 호출
+        //     printTime();
+        // }
+    </script>
+</head>
+<body>
+    <ul>
+        <li th:each="habit : ${habitList}">
+            <p th:text="${habit.name}"></p>
+            <p th:text="${habit.monthCost}"></p>
+            현재 절약한 돈은 <span id="money"></span> 입니다.
+        </li>
+    </ul>
+    <form action="/habit" method="post">
+        <label>
+            절제할 습관
+            <input type="text" name="name">
+        </label>
+        <label>
+            한달 목표 금액
+            <input type="number" name="monthCost">
+        </label>
+        <input type="hidden" name="categoryId" value="1">
+        <input type="submit">
+    </form>
+
+    <ul>
+        <li th:each="use : ${useList}">
+            <p th:text="${use.habit}"></p>
+            <p th:text="${use.useMoney}"></p>
+        </li>
+    </ul>
+    <form action="/habit/use" method="post">
+        <label>
+            habitId
+            <input type="number" name="habitId">
+        </label>
+        <label>
+            사용한 돈
+            <input type="number" name="useMoney">
+        </label>
+        <input type="submit">
+    </form>
+
+</body>
+</html>
