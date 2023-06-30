@@ -17,39 +17,24 @@ public class MonthlyGoalService {
     private final UseListMapper useListMapper;
 
     public int insMonthlyGoal(MonthlyGoalInsDto dto) {
-        int notTodoId = mapper.selNotTodoId(dto.getNotTodo());
-        if (notTodoId == 0) {
+        Integer notTodoId = mapper.selNotTodoId(dto.getNotTodo());
+        if (notTodoId == null) {
             NotTodoEntity entity = new NotTodoEntity();
             entity.setName(dto.getNotTodo());
             mapper.insNotTodo(entity);
+            notTodoId = entity.getNotTodoId();
         }
-
-        LocalDate now = LocalDate.now();
-        int today = now.getDayOfMonth();
-
-        Calendar c = Calendar.getInstance();
-        c.set(now.getYear(), now.getMonthValue(), now.getDayOfMonth());
-        int lastOfDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        List<UseListInsDto> list = new ArrayList<>();
-//        for (int i = today; i <= lastOfDay; i++) {
-//            UseListInsDto dto1 = new UseListInsDto();
-//            dto1.setGoalId(dto.g);
-//            list.add(new UseListInsDto());
-//        }
-//        useListMapper.insUseList();
 
         int costCategory = 1;
         int goalCost = dto.getGoalCost();
 
         if ("시간".equals(dto.getCostCategory())) {
-            String[] s = dto.getMonthYear().split("-");
-            Calendar c = Calendar.getInstance();
-            c.set(Integer.parseInt(s[0]), Integer.parseInt(s[1]) - 1, 1);
-            int lastDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-
+//            String[] s = dto.getMonthYear().split("-");
+//            Calendar c = Calendar.getInstance();
+//            c.set(Integer.parseInt(s[0]), Integer.parseInt(s[1]) - 1, 1);
+//            int lastDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+//            goalCost = goalCost * lastDay;
             costCategory = 2;
-            goalCost = goalCost * lastDay;
         }
 
         MonthlyGoalEntity goalEntity = MonthlyGoalEntity.builder()
@@ -59,7 +44,24 @@ public class MonthlyGoalService {
                 .notTodoId(notTodoId)
                 .build();
 
-        return mapper.insMonthlyGoal(goalEntity) > 0 ? goalEntity.getGoalId() : 0;
+        mapper.insMonthlyGoal(goalEntity);
+
+        LocalDate now = LocalDate.now();
+        int today = now.getDayOfMonth();
+
+        Calendar c = Calendar.getInstance();
+        c.set(now.getYear(), now.getMonthValue()-1, now.getDayOfMonth());
+        int lastOfDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        List<UseListInsDto> list = new ArrayList<>();
+        for (int i = today; i <= lastOfDay; i++) {
+            UseListInsDto dto1 = new UseListInsDto();
+            dto1.setGoalId(goalEntity.getGoalId());
+            dto1.setDate(String.format("%d-%d-%d", now.getYear(), now.getMonthValue(), i));
+            list.add(dto1);
+        }
+
+        return useListMapper.insUseList(list);
     }
 
     public int updMonthlyGoal(MonthlyGoalUpdDto dto) {
