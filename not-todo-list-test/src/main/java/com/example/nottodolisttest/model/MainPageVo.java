@@ -1,6 +1,5 @@
 package com.example.nottodolisttest.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -11,4 +10,5 @@ import java.util.List;
 public class MainPageVo {
     private String memo;
     private List<MonthlyGoalVo> goalList;
+    private SaveStatsVo saveStats;
 }

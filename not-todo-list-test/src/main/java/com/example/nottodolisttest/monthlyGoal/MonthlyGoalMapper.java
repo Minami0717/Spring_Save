@@ -12,4 +12,9 @@ public interface MonthlyGoalMapper {
     int insNotTodo(NotTodoEntity entity);
     List<MonthlyGoalVo> selMonthlyGoal(String monthYear);
     int selNotTodoId(String name);
+    int delMonthlyGoal(int goalId);
+    MaxSaveMoneyVo selMaxSaveMoney();
+    MaxSaveTimeVo selMaxSaveTime();
+    int selSumSaveMoney(MonthDto dto);
+    int selSumSaveTime(MonthDto dto);
 }

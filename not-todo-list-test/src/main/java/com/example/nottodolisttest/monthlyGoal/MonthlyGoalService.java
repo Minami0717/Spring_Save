@@ -1,9 +1,12 @@
 package com.example.nottodolisttest.monthlyGoal;
 
 import com.example.nottodolisttest.model.*;
+import com.example.nottodolisttest.useList.UseListMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MonthlyGoalService {
     private final MonthlyGoalMapper mapper;
+    private final UseListMapper useListMapper;
 
     public int insMonthlyGoal(MonthlyGoalInsDto dto) {
         int notTodoId = mapper.selNotTodoId(dto.getNotTodo());
@@ -19,6 +23,21 @@ public class MonthlyGoalService {
             entity.setName(dto.getNotTodo());
             mapper.insNotTodo(entity);
         }
+
+        LocalDate now = LocalDate.now();
+        int today = now.getDayOfMonth();
+
+        Calendar c = Calendar.getInstance();
+        c.set(now.getYear(), now.getMonthValue(), now.getDayOfMonth());
+        int lastOfDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        List<UseListInsDto> list = new ArrayList<>();
+//        for (int i = today; i <= lastOfDay; i++) {
+//            UseListInsDto dto1 = new UseListInsDto();
+//            dto1.setGoalId(dto.g);
+//            list.add(new UseListInsDto());
+//        }
+//        useListMapper.insUseList();
 
         int costCategory = 1;
         int goalCost = dto.getGoalCost();
@@ -63,5 +82,9 @@ public class MonthlyGoalService {
 
     public List<MonthlyGoalVo> selMonthlyGoal(String monthYear) {
         return mapper.selMonthlyGoal(monthYear);
+    }
+
+    public int delMonthlyGoal(int goalId) {
+        return mapper.delMonthlyGoal(goalId);
     }
 }

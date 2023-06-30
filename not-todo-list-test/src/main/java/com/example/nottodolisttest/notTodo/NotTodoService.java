@@ -1,8 +1,7 @@
 package com.example.nottodolisttest.notTodo;
 
 import com.example.nottodolisttest.memo.MemoMapper;
-import com.example.nottodolisttest.model.MainPageDto;
-import com.example.nottodolisttest.model.MainPageVo;
+import com.example.nottodolisttest.model.*;
 import com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +13,19 @@ public class NotTodoService {
     private final MonthlyGoalMapper goalMapper;
 
     public MainPageVo getMainData(MainPageDto dto) {
+        MaxSaveMoneyVo vo = goalMapper.selMaxSaveMoney();
+        MaxSaveTimeVo vo1 = goalMapper.selMaxSaveTime();
+
+        MonthDto monthDto = new MonthDto(dto.getStartMonth(), dto.getEndMonth());
+
+        SaveStatsVo saveStatsVo = new SaveStatsVo(vo.getMonthYear(), vo.getMaxSaveMoney(),
+                vo1.getMonthYear(), vo1.getMaxSaveTime(),
+                goalMapper.selSumSaveMoney(monthDto), goalMapper.selSumSaveTime(monthDto));
+
         return MainPageVo.builder()
                 .memo(memoMapper.selMemo())
                 .goalList(goalMapper.selMonthlyGoal(dto.getMonthYear()))
+                .saveStats(saveStatsVo)
                 .build();
     }
 }

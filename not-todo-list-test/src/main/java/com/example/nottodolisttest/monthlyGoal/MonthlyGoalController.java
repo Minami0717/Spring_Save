@@ -20,4 +20,9 @@ public class MonthlyGoalController {
     public int putMonthlyGoal(@RequestBody MonthlyGoalUpdDto dto) {
         return service.updMonthlyGoal(dto);
     }
+
+    @DeleteMapping
+    public int delMonthlyGoal(@RequestParam int goalId) {
+        return service.delMonthlyGoal(goalId);
+    }
 }
