@@ -1,4 +1,4 @@
-package com.example.nottodolisttest.model;
+package com.example.nottodolisttest.monthlyGoal.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +10,6 @@ public class MonthlyGoalVo {
     private final int goalId;
     private final String name;
     private final int goalCost;
-    private int sumCost;
+    private int useCostSum;
     private final String monthYear;
 }

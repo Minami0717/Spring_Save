@@ -11,10 +11,11 @@
         </foreach>
     </insert>
 
-    <select id="selSumCostByGoalId">
-        select sum(cost) sumCost
-        from t_use_list
-        where goal_id = #{goalId}
-    </select>
+    <update id="updUseList">
+        update t_use_list
+        set cost = cost + #{cost},
+            use_yn = 1
+        where goal_id = #{goalId} and date = curdate()
+    </update>
 
 </mapper>

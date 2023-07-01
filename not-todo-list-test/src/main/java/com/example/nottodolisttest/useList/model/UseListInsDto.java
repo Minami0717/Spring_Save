@@ -1,4 +1,4 @@
-package com.example.nottodolisttest.model;
+package com.example.nottodolisttest.useList.model;
 
 import lombok.Data;
 

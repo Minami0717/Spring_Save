@@ -1,13 +1,11 @@
 package com.example.nottodolisttest.useList;
 
-import com.example.nottodolisttest.model.UseListInsDto;
+import com.example.nottodolisttest.useList.model.UseListUpdDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/use-list")
@@ -15,8 +13,8 @@ import java.util.List;
 public class UseListController {
     private final UseListService service;
 
-//    @PostMapping
-//    public int postUseList(@RequestBody List<UseListInsDto> dto) {
-//        return service.insUseList(dto);
-//    }
+    @PatchMapping
+    public int patchUseList(@RequestBody UseListUpdDto dto) {
+        return service.updUseList(dto);
+    }
 }

@@ -1,5 +1,6 @@
-package com.example.nottodolisttest.model;
+package com.example.nottodolisttest.notTodo.model;
 
+import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -11,7 +11,7 @@
 
     <update id="updMemo">
         update t_memo
-        set content = #{content}
+        set content = #{memo}
     </update>
 
 </mapper>

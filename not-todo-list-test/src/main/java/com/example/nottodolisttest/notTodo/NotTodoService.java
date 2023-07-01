@@ -1,8 +1,9 @@
 package com.example.nottodolisttest.notTodo;
 
 import com.example.nottodolisttest.memo.MemoMapper;
-import com.example.nottodolisttest.model.*;
 import com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper;
+import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
+import com.example.nottodolisttest.notTodo.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class NotTodoService {
 
         return MainPageVo.builder()
                 .memo(memoMapper.selMemo())
-                .goalList(goalMapper.selMonthlyGoal(dto.getMonthYear()))
+                .goalList(goalMapper.selMonthlyGoal())
                 .saveStats(saveStatsVo)
                 .build();
     }

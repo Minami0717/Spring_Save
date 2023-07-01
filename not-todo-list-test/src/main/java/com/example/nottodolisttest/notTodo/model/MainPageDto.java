@@ -1,10 +1,9 @@
-package com.example.nottodolisttest.model;
+package com.example.nottodolisttest.notTodo.model;
 
 import lombok.Data;
 
 @Data
 public class MainPageDto {
-    private String monthYear;
     private String startMonth;
     private String endMonth;
 }
