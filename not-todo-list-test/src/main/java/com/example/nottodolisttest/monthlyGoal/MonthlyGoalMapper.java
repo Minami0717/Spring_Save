@@ -3,10 +3,10 @@ package com.example.nottodolisttest.monthlyGoal;
 import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalEntity;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
-import com.example.nottodolisttest.notTodo.model.MaxSaveMoneyVo;
-import com.example.nottodolisttest.notTodo.model.MaxSaveTimeVo;
-import com.example.nottodolisttest.notTodo.model.NotTodoEntity;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
+import com.example.nottodolisttest.main.model.MaxSaveMoneyVo;
+import com.example.nottodolisttest.main.model.MaxSaveTimeVo;
+import com.example.nottodolisttest.main.model.NotTodoEntity;
+import com.example.nottodolisttest.useList.model.UseListUpdByGoalIdDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -23,5 +23,5 @@ public interface MonthlyGoalMapper {
     MaxSaveTimeVo selMaxSaveTime();
     int selSumSaveMoney(MonthDto dto);
     int selSumSaveTime(MonthDto dto);
-    int updSaveCost(UseListUpdDto dto);
+    int updSaveCost(UseListUpdByGoalIdDto dto);
 }

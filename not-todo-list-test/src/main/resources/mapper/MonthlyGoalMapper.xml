@@ -24,7 +24,7 @@
 
     <update id="updSaveCost">
         update t_monthly_goal
-        set save_cost = save_cost - #{cost}
+        set save_cost = save_cost - #{useCost}
         where goal_id = #{goalId}
     </update>
 
@@ -34,8 +34,8 @@
     </insert>
 
     <select id="selMonthlyGoal">
-        select A.goal_id goalId, B.name, A.goal_cost goalCost, sum(C.cost) sumCost,
-        A.month_year monthYear
+        select C.use_list_id useListId, A.goal_id goalId, B.name notTodo, A.goal_cost goalCost,
+            sum(C.useCost) useCostSum, A.month_year monthYear
         from t_monthly_goal A
         inner join t_not_todo B
         on A.not_todo_id = B.not_todo_id

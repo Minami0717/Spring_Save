@@ -3,8 +3,7 @@ package com.example.nottodolisttest.monthlyGoal;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalEntity;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalInsDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalUpdDto;
-import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
-import com.example.nottodolisttest.notTodo.model.NotTodoEntity;
+import com.example.nottodolisttest.main.model.NotTodoEntity;
 import com.example.nottodolisttest.useList.UseListMapper;
 import com.example.nottodolisttest.useList.model.UseListInsDto;
 import lombok.RequiredArgsConstructor;
@@ -58,10 +57,10 @@ public class MonthlyGoalService {
         LocalDate now = LocalDate.now();
         int today = now.getDayOfMonth();
 
-        if (now.getMonthValue() != inputMonth && now.getYear() != inputYear) { today = 1; }
+        if (now.getMonthValue() != inputMonth || now.getYear() != inputYear) { today = 1; }
 
         Calendar c = Calendar.getInstance();
-        c.set(now.getYear(), now.getMonthValue()-1, now.getDayOfMonth());
+        c.set(inputYear, inputMonth - 1, 1);
         int lastDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         List<UseListInsDto> list = new ArrayList<>();
@@ -76,11 +75,12 @@ public class MonthlyGoalService {
     }
 
     public int updMonthlyGoal(MonthlyGoalUpdDto dto) {
-        int notTodoId = mapper.selNotTodoId(dto.getNotTodo());
-        if (notTodoId == 0) {
+        Integer notTodoId = mapper.selNotTodoId(dto.getNotTodo());
+        if (notTodoId == null) {
             NotTodoEntity entity = new NotTodoEntity();
             entity.setName(dto.getNotTodo());
             mapper.insNotTodo(entity);
+            notTodoId = entity.getNotTodoId();
         }
 
         MonthlyGoalEntity goalEntity = MonthlyGoalEntity.builder()

@@ -1,15 +1,15 @@
-package com.example.nottodolisttest.notTodo;
+package com.example.nottodolisttest.main;
 
 import com.example.nottodolisttest.memo.MemoMapper;
 import com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper;
 import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
-import com.example.nottodolisttest.notTodo.model.*;
+import com.example.nottodolisttest.main.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class NotTodoService {
+public class MainService {
     private final MemoMapper memoMapper;
     private final MonthlyGoalMapper goalMapper;
 

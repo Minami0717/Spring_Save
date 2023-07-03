@@ -1,7 +1,6 @@
-package com.example.nottodolisttest.notTodo.model;
+package com.example.nottodolisttest.main.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
