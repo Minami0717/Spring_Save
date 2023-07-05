@@ -24,4 +24,5 @@ public interface MonthlyGoalMapper {
     int selSumSaveMoney(MonthDto dto);
     int selSumSaveTime(MonthDto dto);
     int updSaveCost(UseListUpdDto dto);
+
 }
