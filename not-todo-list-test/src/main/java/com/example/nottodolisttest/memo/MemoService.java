@@ -1,19 +1,20 @@
 package com.example.nottodolisttest.memo;
 
-import com.example.nottodolisttest.memo.model.MemoDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.nottodolisttest.member.MemberMapper;
+import com.example.nottodolisttest.member.model.MemoUpdDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class MemoService {
-    private final MemoMapper mapper;
+    private final MemberMapper mapper;
 
-    @Autowired
-    public MemoService(MemoMapper mapper) {
-        this.mapper = mapper;
+    public String selMemo(int memberId) {
+        return mapper.selMemo(memberId);
     }
 
-    public int updMemo(MemoDto dto) {
+    public int updMemo(MemoUpdDto dto) {
         return mapper.updMemo(dto);
     }
 }

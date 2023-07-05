@@ -1,6 +1,5 @@
 package com.example.nottodolisttest.calender;
 
-import com.example.nottodolisttest.useList.UseListService;
 import com.example.nottodolisttest.useList.model.UseListMonthVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +12,10 @@ import java.util.List;
 @RequestMapping("/api/calender")
 @RequiredArgsConstructor
 public class CalenderController {
-    private final UseListService service;
+    private final CalenderService service;
 
     @GetMapping
     public List<UseListMonthVo> getCalender(String yearMonth) {
-        return service.selUseListByMonth(yearMonth);
+        return service.selMonthlyUseList(yearMonth);
     }
 }

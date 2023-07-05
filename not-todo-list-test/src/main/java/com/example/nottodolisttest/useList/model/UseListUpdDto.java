@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class UseListUpdDto {
-    private int useListId;
+    private int goalId;
     private int useCost;
 }

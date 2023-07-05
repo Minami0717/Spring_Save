@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
     private final MainService service;
 
-    @GetMapping
-    public MainPageVo getMainData(MainPageDto dto) {
-        return service.getMainData(dto);
-    }
+//    @GetMapping
+//    public MainPageVo getMainData(MainPageDto dto) {
+//        return service.getMainData(dto);
+//    }
 }

@@ -18,7 +18,7 @@
         where goal_id = #{goalId} and date = curdate()
     </update>
 
-    <select id="selUseListByMonth">
+    <select id="selMonthlyUseList">
         select date, name notTodo
         from t_use_list tul
         inner join t_monthly_goal tmg on tul.goal_id = tmg.goal_id
@@ -26,8 +26,8 @@
         where use_yn = 1 and date_format(date, '%Y-%m') = #{yearMonth}
     </select>
 
-    <select id="selUseListByDay">
-        select use_list_id useListId, name notTodo, cost_category costCategoryId, use_cost useCost
+    <select id="selDailyUseList">
+        select use_list_id useListId, tmg.goal_id goalId, name notTodo, cost_category costCategoryId, use_cost useCost
         from t_use_list tul
         inner join t_monthly_goal tmg on tul.goal_id = tmg.goal_id
         inner join t_not_todo tnt on tmg.not_todo_id = tnt.not_todo_id

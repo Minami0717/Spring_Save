@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UseListDailyVo {
     private final int useListId;
+    private final int goalId;
     private final String notTodo;
     private final int costCategoryId;
     private final int useCost;

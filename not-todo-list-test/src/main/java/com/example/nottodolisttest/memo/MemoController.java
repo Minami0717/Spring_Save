@@ -1,11 +1,8 @@
 package com.example.nottodolisttest.memo;
 
-import com.example.nottodolisttest.memo.model.MemoDto;
+import com.example.nottodolisttest.member.model.MemoUpdDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/memo")
@@ -13,8 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemoController {
     private final MemoService service;
 
-    @PutMapping
-    public int putMemo(@RequestBody MemoDto dto) {
+    @GetMapping
+    public String getMemo(int memberId) {
+        return service.selMemo(memberId);
+    }
+
+    @PatchMapping
+    public int patchMemo(@RequestBody MemoUpdDto dto) {
         return service.updMemo(dto);
     }
 }

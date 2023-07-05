@@ -98,7 +98,7 @@ public class UserService {
 
     public int updUserPic(MultipartFile pic, UserUpdPicDto dto) {
         String centerPath = String.format("user/%d", dto.getIuser());
-        String dicPath = String.format("%s/%s", fileDir, centerPath);
+        String dicPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), centerPath);
 
         File dic = new File(dicPath);
         if (!dic.exists()) {
@@ -108,7 +108,7 @@ public class UserService {
         String originFileName = pic.getOriginalFilename();
         String savedFileName = FileUtils.makeRandomFileNm(originFileName);
         String savedFilePath = String.format("%s/%s", centerPath, savedFileName);
-        String targetPath = String.format("%s/%s", fileDir, savedFilePath);
+        String targetPath = String.format("%s/%s", FileUtils.getAbsolutePath(fileDir), savedFilePath);
 
         File file = new File(targetPath);
 
