@@ -21,8 +21,8 @@ public interface MonthlyGoalMapper {
     int delMonthlyGoal(int goalId);
     MaxSaveMoneyVo selMaxSaveMoney();
     MaxSaveTimeVo selMaxSaveTime();
-    int selSumSaveMoney(MonthDto dto);
-    int selSumSaveTime(MonthDto dto);
+    Integer selSumSaveMoney(MonthDto dto);
+    Integer selSumSaveTime(MonthDto dto);
     int updSaveCost(UseListUpdDto dto);
 
 }

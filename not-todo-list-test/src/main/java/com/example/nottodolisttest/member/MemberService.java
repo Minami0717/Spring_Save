@@ -22,4 +22,12 @@ public class MemberService {
     public String selMember(int memberId) {
         return mapper.selMember(memberId);
     }
+
+    public String selMemo(int memberId) {
+        return mapper.selMemo(memberId);
+    }
+
+    public int updMemo(MemoUpdDto dto) {
+        return mapper.updMemo(dto);
+    }
 }

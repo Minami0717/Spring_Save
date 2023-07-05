@@ -1,5 +1,7 @@
 package com.example.nottodolisttest.monthlyGoal;
 
+import com.example.nottodolisttest.main.model.SaveCostDataVo;
+import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalEntity;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalInsDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalUpdDto;
@@ -95,5 +97,13 @@ public class MonthlyGoalService {
 
     public int delMonthlyGoal(int goalId) {
         return mapper.delMonthlyGoal(goalId);
+    }
+
+    public SaveCostDataVo selSaveCostData(MonthDto dto) {
+        return new SaveCostDataVo(
+                mapper.selMaxSaveMoney(),
+                mapper.selMaxSaveTime(),
+                mapper.selSumSaveMoney(dto),
+                mapper.selSumSaveTime(dto));
     }
 }

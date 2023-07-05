@@ -11,5 +11,5 @@ import java.util.List;
 public class MainPageVo {
     private String memo;
     private List<MonthlyGoalVo> goalList;
-    private SaveStatsVo saveStats;
+    private SaveCostDataVo saveStats;
 }

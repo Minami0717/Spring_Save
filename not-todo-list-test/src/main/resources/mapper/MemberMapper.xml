@@ -17,7 +17,7 @@
     </update>
 
     <insert id="insMember">
-        <selectKey keyProperty="memberId" order="AFTER">
+        <selectKey keyProperty="memberId" order="AFTER" resultType="int">
             select member_id
             from t_member
             where nickname = #{nickname}
