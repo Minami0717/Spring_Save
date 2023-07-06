@@ -13,8 +13,7 @@
 
     <update id="updUseList">
         update t_use_list
-        set use_cost = use_cost + #{useCost},
-            use_yn = 1
+        set use_cost = use_cost + #{useCost}
         where goal_id = #{goalId} and date = curdate()
     </update>
 

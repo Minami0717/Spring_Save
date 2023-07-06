@@ -1,6 +1,7 @@
 package com.example.nottodolisttest.monthlyGoal;
 
 import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
+import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalDetailVo;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalEntity;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
 import com.example.nottodolisttest.main.model.MaxSaveMoneyVo;
@@ -17,7 +18,7 @@ public interface MonthlyGoalMapper {
     int updMonthlyGoal(MonthlyGoalEntity entity);
     int insNotTodo(NotTodoEntity entity);
     List<MonthlyGoalVo> selTodayGoal();
-    Integer selNotTodoId(String name);
+    List<MonthlyGoalDetailVo> selMonthlyGoalAll();
     int delMonthlyGoal(int goalId);
     MaxSaveMoneyVo selMaxSaveMoney();
     MaxSaveTimeVo selMaxSaveTime();

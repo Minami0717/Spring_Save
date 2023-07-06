@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class MonthlyGoalEntity {
     private int goalId;
+    private int memberId;
     private int notTodoId;
     private int costCategory;
     private int goalCost;

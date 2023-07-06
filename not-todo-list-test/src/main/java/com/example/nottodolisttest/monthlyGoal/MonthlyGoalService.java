@@ -1,10 +1,6 @@
 package com.example.nottodolisttest.monthlyGoal;
 
-import com.example.nottodolisttest.main.model.SaveCostDataVo;
-import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
-import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalEntity;
-import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalInsDto;
-import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalUpdDto;
+import com.example.nottodolisttest.monthlyGoal.model.*;
 import com.example.nottodolisttest.main.model.NotTodoEntity;
 import com.example.nottodolisttest.useList.UseListMapper;
 import com.example.nottodolisttest.useList.model.UseListInsDto;
@@ -23,31 +19,16 @@ public class MonthlyGoalService {
     private final UseListMapper useListMapper;
 
     public int insMonthlyGoal(MonthlyGoalInsDto dto) {
-        Integer notTodoId = mapper.selNotTodoId(dto.getNotTodo());
-        if (notTodoId == null) {
-            NotTodoEntity entity = new NotTodoEntity();
-            entity.setName(dto.getNotTodo());
-            mapper.insNotTodo(entity);
-            notTodoId = entity.getNotTodoId();
-        }
-
-        int costCategory = 1;
-        int goalCost = dto.getGoalCost();
-
-        if ("시간".equals(dto.getCostCategory())) {
-//            String[] s = dto.getMonthYear().split("-");
-//            Calendar c = Calendar.getInstance();
-//            c.set(Integer.parseInt(s[0]), Integer.parseInt(s[1]) - 1, 1);
-//            int lastDay = c.getActualMaximum(Calendar.DAY_OF_MONTH);
-//            goalCost = goalCost * lastDay;
-            costCategory = 2;
-        }
+        NotTodoEntity entity = new NotTodoEntity();
+        entity.setName(dto.getNotTodo());
+        mapper.insNotTodo(entity);
 
         MonthlyGoalEntity goalEntity = MonthlyGoalEntity.builder()
-                .goalCost(goalCost)
-                .costCategory(costCategory)
+                .goalCost(dto.getGoalCost())
+                .costCategory("돈".equals(dto.getCostCategory()) ? 1 : 2)
                 .monthYear(dto.getMonthYear())
-                .notTodoId(notTodoId)
+                .notTodoId(entity.getNotTodoId())
+                .memberId(dto.getMemberId())
                 .build();
 
         mapper.insMonthlyGoal(goalEntity);
@@ -77,18 +58,14 @@ public class MonthlyGoalService {
     }
 
     public int updMonthlyGoal(MonthlyGoalUpdDto dto) {
-        Integer notTodoId = mapper.selNotTodoId(dto.getNotTodo());
-        if (notTodoId == null) {
-            NotTodoEntity entity = new NotTodoEntity();
-            entity.setName(dto.getNotTodo());
-            mapper.insNotTodo(entity);
-            notTodoId = entity.getNotTodoId();
-        }
+        NotTodoEntity entity = new NotTodoEntity();
+        entity.setName(dto.getNotTodo());
+        mapper.insNotTodo(entity);
 
         MonthlyGoalEntity goalEntity = MonthlyGoalEntity.builder()
                 .goalCost(dto.getGoalCost())
                 .costCategory("돈".equals(dto.getCostCategory()) ? 1 : 2)
-                .notTodoId(notTodoId)
+                .notTodoId(entity.getNotTodoId())
                 .goalId(dto.getGoalId())
                 .build();
 
@@ -99,11 +76,11 @@ public class MonthlyGoalService {
         return mapper.delMonthlyGoal(goalId);
     }
 
-    public SaveCostDataVo selSaveCostData(MonthDto dto) {
-        return new SaveCostDataVo(
-                mapper.selMaxSaveMoney(),
-                mapper.selMaxSaveTime(),
-                mapper.selSumSaveMoney(dto),
-                mapper.selSumSaveTime(dto));
+    public List<MonthlyGoalDetailVo> selMonthlyGoalAll() {
+        List<MonthlyGoalDetailVo> list = mapper.selMonthlyGoalAll();
+        for (MonthlyGoalDetailVo vo : list) {
+            vo.setCostCategory(vo.getCostCategoryId() == 1 ? "원" : "시간");
+        }
+        return list;
     }
 }

@@ -2,10 +2,14 @@ package com.example.nottodolisttest.monthlyGoal;
 
 import com.example.nottodolisttest.main.model.SaveCostDataVo;
 import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
+import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalDetailVo;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalInsDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalUpdDto;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/monthly-goal")
@@ -22,15 +26,16 @@ public class MonthlyGoalController {
     public int putMonthlyGoal(@RequestBody MonthlyGoalUpdDto dto) {
         return service.updMonthlyGoal(dto);
     }
-    @GetMapping("/save-data")
-    public SaveCostDataVo getData(@RequestParam(defaultValue = "2023-07") String startMonth,
-                                  @RequestParam(defaultValue = "2023-07") String endMonth) {
-        MonthDto dto = new MonthDto(startMonth, endMonth);
-        return service.selSaveCostData(dto);
-    }
+
     @DeleteMapping
     public int delMonthlyGoal(@RequestParam int goalId) {
         return service.delMonthlyGoal(goalId);
+    }
+
+    @GetMapping
+    @Operation(summary = "누적목표 조회")
+    public List<MonthlyGoalDetailVo> getMonthlyGoal() {
+        return service.selMonthlyGoalAll();
     }
 
 
