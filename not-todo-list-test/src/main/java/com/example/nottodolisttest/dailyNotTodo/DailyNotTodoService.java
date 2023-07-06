@@ -3,7 +3,6 @@ package com.example.nottodolisttest.dailyNotTodo;
 import com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper;
 import com.example.nottodolisttest.useList.UseListMapper;
 import com.example.nottodolisttest.useList.model.UseListDailyVo;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +22,9 @@ public class DailyNotTodoService {
         return list;
     }
 
-    public int updUseList(UseListUpdDto dto) {
-
-        goalMapper.updSaveCost(dto);
-        return 0;
-    }
+//    public int updUseList(UseListUpdDto dto) {
+//
+//        goalMapper.updSaveCost(dto);
+//        return 0;
+//    }
 }

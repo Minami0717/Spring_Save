@@ -1,4 +1,4 @@
-package com.example.nottodolisttest.main.model;
+package com.example.nottodolisttest.monthlyGoal.model;
 
 import lombok.Data;
 

@@ -5,10 +5,8 @@ import com.example.nottodolisttest.member.model.MemberEntity;
 import com.example.nottodolisttest.member.model.MemberInsDto;
 import com.example.nottodolisttest.member.model.MemoUpdDto;
 import com.example.nottodolisttest.monthlyGoal.MonthlyGoalMapper;
-import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
-import com.example.nottodolisttest.main.model.*;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
+import com.example.nottodolisttest.useList.UseListMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +18,7 @@ import java.util.List;
 public class MainService {
     private final MemberMapper memoMapper;
     private final MonthlyGoalMapper goalMapper;
-
-    public SaveCostDataVo selSaveCostData(MonthDto dto) {
-        return new SaveCostDataVo(
-                goalMapper.selMaxSaveMoney(),
-                goalMapper.selMaxSaveTime(),
-                goalMapper.selSumSaveMoney(dto),
-                goalMapper.selSumSaveTime(dto));
-    }
+    private final UseListMapper useListMapper;
 
     public int insMember(MemberInsDto dto) {
         MemberEntity entity = new MemberEntity();
@@ -51,10 +42,5 @@ public class MainService {
 
     public List<MonthlyGoalVo> selTodayGoal() {
         return goalMapper.selTodayGoal();
-    }
-
-    public int updTodayNotTodo(UseListUpdDto dto) {
-        goalMapper.updSaveCost(dto);
-        return goalMapper.updUseList(dto);
     }
 }

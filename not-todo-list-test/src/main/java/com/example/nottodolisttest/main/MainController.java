@@ -1,11 +1,8 @@
 package com.example.nottodolisttest.main;
 
-import com.example.nottodolisttest.main.model.SaveCostDataVo;
 import com.example.nottodolisttest.member.model.MemberInsDto;
 import com.example.nottodolisttest.member.model.MemoUpdDto;
-import com.example.nottodolisttest.monthlyGoal.model.MonthDto;
 import com.example.nottodolisttest.monthlyGoal.model.MonthlyGoalVo;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -20,16 +17,8 @@ import java.util.List;
 public class MainController {
     private final MainService service;
 
-    @GetMapping("/save-data")
-    @Operation(summary = "절약 비용 데이터 조회")
-    public SaveCostDataVo getData(@RequestParam(defaultValue = "2023-07") String startMonth,
-                                  @RequestParam(defaultValue = "2023-07") String endMonth) {
-        MonthDto dto = new MonthDto(startMonth, endMonth);
-        return service.selSaveCostData(dto);
-    }
-
     @PostMapping("/member")
-    @Operation(summary = "회원 등록")
+    @Operation(summary = "회원 등록(이미 존재하는 회원일 경우 id값 리턴)")
     public int postMember(@RequestBody MemberInsDto dto) {
         return service.insMember(dto);
     }
@@ -57,8 +46,8 @@ public class MainController {
         return service.selTodayGoal();
     }
 
-    @PatchMapping("/today-not-todo")
-    public int patchTodayNotTodo(@RequestBody UseListUpdDto dto) {
-        return service.updTodayNotTodo(dto);
-    }
+//    @PatchMapping("/today-not-todo")
+//    public int patchTodayNotTodo(@RequestBody UseListUpdDto dto) {
+//        return service.updTodayNotTodo(dto);
+//    }
 }

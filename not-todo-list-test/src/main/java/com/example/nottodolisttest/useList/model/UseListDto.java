@@ -3,7 +3,7 @@ package com.example.nottodolisttest.useList.model;
 import lombok.Data;
 
 @Data
-public class UseListInsDto {
+public class UseListDto {
     private int goalId;
-    private String date;
+    private int useCost;
 }

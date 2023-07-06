@@ -5,10 +5,9 @@
 <mapper namespace="com.example.nottodolisttest.useList.UseListMapper">
 
     <insert id="insUseList">
-        insert t_use_list (goal_id, date) values
-        <foreach collection="list" item="item" separator=",">
-            (#{item.goalId}, #{item.date})
-        </foreach>
+        insert t_use_list
+        set goal_id = #{goalId},
+            use_cost = #{useCost}
     </insert>
 
     <update id="updUseList">

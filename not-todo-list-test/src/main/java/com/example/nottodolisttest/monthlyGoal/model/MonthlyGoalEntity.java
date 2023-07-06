@@ -11,6 +11,6 @@ public class MonthlyGoalEntity {
     private int notTodoId;
     private int costCategory;
     private int goalCost;
-    private String monthYear;
     private int saveCost;
+    private String startDate;
 }

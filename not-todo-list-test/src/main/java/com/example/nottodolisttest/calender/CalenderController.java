@@ -2,7 +2,6 @@ package com.example.nottodolisttest.calender;
 
 import com.example.nottodolisttest.useList.model.UseListDailyVo;
 import com.example.nottodolisttest.useList.model.UseListMonthVo;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

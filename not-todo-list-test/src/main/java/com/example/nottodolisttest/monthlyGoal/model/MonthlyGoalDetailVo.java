@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MonthlyGoalDetailVo {
     private final int goalId;
-    private final String monthYear;
+    private final String startDate;
     private final String notTodo;
     private final int costCategoryId;
     private final String goalCost;

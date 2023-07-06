@@ -7,8 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface UseListMapper {
-    int insUseList(List<UseListInsDto> dto);
-    int updUseList(UseListUpdDto dto);
+    int insUseList(UseListDto dto);
+    int updUseList(UseListDto dto);
     List<UseListMonthVo> selMonthlyUseList(String yearMonth);
     List<UseListDailyVo> selDailyUseList(String day);
 }

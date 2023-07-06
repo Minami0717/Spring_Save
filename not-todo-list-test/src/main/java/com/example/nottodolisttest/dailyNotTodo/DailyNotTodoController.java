@@ -1,7 +1,6 @@
 package com.example.nottodolisttest.dailyNotTodo;
 
 import com.example.nottodolisttest.useList.model.UseListDailyVo;
-import com.example.nottodolisttest.useList.model.UseListUpdDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +17,8 @@ public class DailyNotTodoController {
         return service.selDailyUseList(day);
     }
 
-    @PatchMapping
-    public int patchDailyUseList(@RequestBody UseListUpdDto dto) {
-        return service.updUseList(dto);
-    }
+//    @PatchMapping
+//    public int patchDailyUseList(@RequestBody UseListUpdDto dto) {
+//        return service.updUseList(dto);
+//    }
 }
