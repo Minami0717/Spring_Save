@@ -43,16 +43,30 @@
         <![CDATA[
             SELECT A.ctnt, DATE_FORMAT(A.deadline_date, "%m-%d") deadlineDate,
             date_format(A.deadline_time, "%H:%i") deadlineTime, B.nick_nm nickNm, B.nm, A.finish_yn finishYn
-            , GROUP_CONCAT(C.repeat_day SEPARATOR '|') repeatDay
             FROM p_todo A
             INNER JOIN p_plant B
             ON A.iplant = B.iplant
-            INNER JOIN p_day C
-            ON C.itodo = A.itodo
             WHERE del_yn = 0 AND finish_yn = 0
             AND (A.deadline_date >= #{sDate} AND A.deadline_date <= #{eDate})
-            GROUP BY A.ctnt, A.deadline_date, A.deadline_time, B.nick_nm, B.nm, A.finish_yn
             ORDER BY deadline_date
+        ]]>
+    </select>
+
+    <select id="selTodoRepeat">
+        <![CDATA[
+            select pt.itodo, pt.ctnt, deadline_date deadlineDate,
+                   date_format(deadline_time, '%H:%i') deadlineTime,
+                   nick_nm nickNm, nm, finish_yn finishYn, repeat_day repeatDay
+            from p_todo pt
+            inner join (
+                select pd.itodo, group_concat(repeat_day) repeat_day
+                from p_day pd
+                         inner join p_todo pt on pd.itodo = pt.itodo
+                group by pd.itodo
+            ) A
+            on pt.itodo = A.itodo
+            inner join p_plant pp on pt.iplant = pp.iplant
+            where date_format(deadline_date, '%Y-%m') <= #{targetDate}
         ]]>
     </select>
 

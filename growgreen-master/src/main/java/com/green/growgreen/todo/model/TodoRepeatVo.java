@@ -2,11 +2,13 @@ package com.green.growgreen.todo.model;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
-public class TodoListVo {
+public class TodoRepeatVo {
     private int itodo;
     private String ctnt;
-    private String deadlineDate;
+    private LocalDate deadlineDate;
     private String deadlineTime;
     private String nickNm;
     private String nm;

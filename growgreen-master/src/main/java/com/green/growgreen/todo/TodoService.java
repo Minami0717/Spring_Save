@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,38 +67,82 @@ public class TodoService {
 
     public List<TodoVo> getTodoAll(int year, int mon) {
         YearMonth today;
-        if (year == 0 || mon == 0) {
-            today = YearMonth.now();
-        } else {
-            today = YearMonth.of(year, mon);
-        }
+        if (year == 0 || mon == 0) { today = YearMonth.now(); }
+        else { today = YearMonth.of(year, mon); }
 
         LocalDate todayStart = today.atDay(1);
         LocalDate todayEnd = today.atEndOfMonth();
 
         LocalDate calStart = todayStart.plusDays(-todayStart.getDayOfWeek().getValue());
-        LocalDate calEnd = todayEnd.plusDays(6-todayEnd.getDayOfWeek().getValue());
+        LocalDate calEnd = todayEnd.plusDays(6 - todayEnd.getDayOfWeek().getValue());
 
         TodoSelListDto dto = TodoSelListDto.builder()
                 .sDate(calStart.toString())
                 .eDate(calEnd.toString())
                 .build();
 
-        List<TodoListVo> list = MAPPER.selTodoAll(dto);
+        List<TodoVo> list = MAPPER.selTodoAll(dto);
 
         List<TodoVo> result = new LinkedList<>();
-        for (TodoListVo todo : list) {
-            result.add(TodoVo.builder()
-                    .itodo(todo.getItodo())
-                    .ctnt(todo.getCtnt())
-                    .deadlineDate(todo.getDeadlineDate())
-                    .deadlineTime(todo.getDeadlineTime())
-                    .nickNm(todo.getNickNm())
-                    .nm(todo.getNm())
-                    .finishYn(todo.getFinishYn())
-                    .build());
-        }
+        result.addAll(list);
+
+        List<TodoRepeatVo> repeatInfoList = MAPPER.selTodoRepeat(today.toString());
+        List<TodoVo> repeatVoList = createRepeatTodo(today, repeatInfoList);
+        result.addAll(repeatVoList);
         return result;
+    }
+
+    private List<TodoVo> createRepeatTodo(YearMonth today, List<TodoRepeatVo> repeatInfoList) {
+        List<TodoVo> list = new LinkedList<>();
+
+        int targetYear = today.getYear();
+        int targetMon = today.getMonthValue();
+
+        LocalDate targetStart = today.atDay(1);
+        int startDayOfMon = targetStart.getDayOfWeek().getValue();
+
+        LocalDate targetEnd = today.atEndOfMonth();
+        int endDayOfMon = targetEnd.getDayOfMonth();
+
+        for (TodoRepeatVo vo : repeatInfoList) {
+            LocalDate voDate = vo.getDeadlineDate();
+            int voYear = voDate.getYear();
+            int voMon = voDate.getMonthValue();
+            int voDay = voDate.getDayOfMonth();
+
+            String repeatStr = vo.getRepeatDay();
+            String[] repeatWeekArr = repeatStr.split(",");
+
+            for (String repeat : repeatWeekArr) {
+                int dayOfWeek = "6".equals(repeat) ? 0 : Integer.parseInt(repeat) + 1;
+                int lowDay = 1;
+
+                if (dayOfWeek != startDayOfMon) {
+                    lowDay += 7 - (startDayOfMon - dayOfWeek);
+                }
+
+                if (targetYear == voYear && targetMon == voMon) {
+                    while (lowDay <= voDay) {
+                        lowDay += 7;
+                    }
+                }
+
+                while (lowDay <= endDayOfMon) {
+                    TodoVo todoVo = new TodoVo();
+                    todoVo.setItodo(vo.getItodo());
+                    todoVo.setCtnt(vo.getCtnt());
+                    todoVo.setDeadlineDate(String.format("%02d-%02d", voMon, lowDay));
+                    todoVo.setDeadlineTime(vo.getDeadlineTime().toString());
+                    todoVo.setNickNm(vo.getNickNm());
+                    todoVo.setNm(vo.getNm());
+                    todoVo.setFinishYn(vo.getFinishYn());
+                    list.add(todoVo);
+                    lowDay += 7;
+                }
+            }
+        }
+
+        return list;
     }
 
     public TodoAllDto getTodoDetail(int itodo) {
