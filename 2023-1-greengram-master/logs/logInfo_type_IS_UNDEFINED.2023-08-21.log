@@ -1,0 +1,285 @@
+[2023-08-21 10:06:25.091 INFO  restartedMain] [com.green.greengram.GreengramApplication] Starting GreengramApplication using Java 17.0.7 with PID 8812 (D:\Students\Spring\2023-1-greengram-master\target\classes started by Administrator in D:\Students\Spring\2023-1-greengram-master)
+[2023-08-21 10:06:25.092 INFO  restartedMain] [com.green.greengram.GreengramApplication] No active profile set, falling back to 1 default profile: "default"
+[2023-08-21 10:06:25.280 INFO  restartedMain] [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2023-08-21 10:06:25.280 INFO  restartedMain] [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2023-08-21 10:06:25.706 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Multiple Spring Data modules found, entering strict repository configuration mode
+[2023-08-21 10:06:25.707 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2023-08-21 10:06:25.722 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+[2023-08-21 10:06:25.922 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Multiple Spring Data modules found, entering strict repository configuration mode
+[2023-08-21 10:06:25.924 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-08-21 10:06:26.050 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 125 ms. Found 5 JPA repository interfaces.
+[2023-08-21 10:06:26.059 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Multiple Spring Data modules found, entering strict repository configuration mode
+[2023-08-21 10:06:26.059 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2023-08-21 10:06:26.064 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.green.greengram.feed.FeedCmtRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[2023-08-21 10:06:26.064 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.green.greengram.feed.FeedFavRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[2023-08-21 10:06:26.064 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.green.greengram.feed.FeedPicRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[2023-08-21 10:06:26.065 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.green.greengram.feed.FeedRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[2023-08-21 10:06:26.065 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.green.greengram.user.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+[2023-08-21 10:06:26.065 INFO  restartedMain] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+[2023-08-21 10:06:26.523 INFO  restartedMain] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port(s): 8082 (http)
+[2023-08-21 10:06:26.529 INFO  restartedMain] [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8082"]
+[2023-08-21 10:06:26.531 INFO  restartedMain] [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+[2023-08-21 10:06:26.531 INFO  restartedMain] [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.11]
+[2023-08-21 10:06:26.576 INFO  restartedMain] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+[2023-08-21 10:06:26.576 INFO  restartedMain] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 1296 ms
+[2023-08-21 10:06:26.898 INFO  restartedMain] [org.hibernate.jpa.internal.util.LogHelper] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-08-21 10:06:26.955 INFO  restartedMain] [org.hibernate.Version] HHH000412: Hibernate ORM core version 6.2.6.Final
+[2023-08-21 10:06:26.957 INFO  restartedMain] [org.hibernate.cfg.Environment] HHH000406: Using bytecode reflection optimizer
+[2023-08-21 10:06:27.072 INFO  restartedMain] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] HHH000021: Bytecode provider name : bytebuddy
+[2023-08-21 10:06:27.181 INFO  restartedMain] [org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo] No LoadTimeWeaver setup: ignoring JPA class transformer
+[2023-08-21 10:06:27.194 INFO  restartedMain] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Starting...
+[2023-08-21 10:06:27.255 INFO  restartedMain] [com.zaxxer.hikari.pool.HikariPool] HikariPool-1 - Added connection org.mariadb.jdbc.Connection@64a3dcc
+[2023-08-21 10:06:27.256 INFO  restartedMain] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Start completed.
+[2023-08-21 10:06:27.478 INFO  restartedMain] [org.hibernate.bytecode.internal.BytecodeProviderInitiator] HHH000021: Bytecode provider name : bytebuddy
+[2023-08-21 10:06:28.006 INFO  restartedMain] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-08-21 10:06:28.261 INFO  restartedMain] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-08-21 10:06:28.495 ERROR restartedMain] [org.springframework.boot.web.embedded.tomcat.TomcatStarter] Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'securityConfiguration' defined in file [D:\Students\Spring\2023-1-greengram-master\target\classes\com\green\greengram\common\config\security\SecurityConfiguration.class]: Unsatisfied dependency expressed through constructor parameter 6: Error creating bean with name 'tokenAccessDeniedHandler' defined in file [D:\Students\Spring\2023-1-greengram-master\target\classes\com\green\greengram\common\config\security\handler\TokenAccessDeniedHandler.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setAuthorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+[2023-08-21 10:06:28.518 INFO  restartedMain] [org.apache.catalina.core.StandardService] Stopping service [Tomcat]
+[2023-08-21 10:06:28.520 WARN  restartedMain] [org.apache.catalina.loader.WebappClassLoaderBase] The web application [ROOT] appears to have started a thread named [lettuce-timer-3-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/java.lang.Thread.sleep(Native Method)
+ app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:600)
+ app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:496)
+ app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+[2023-08-21 10:06:28.521 WARN  restartedMain] [org.apache.catalina.loader.WebappClassLoaderBase] The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@17.0.7/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+[2023-08-21 10:06:28.521 WARN  restartedMain] [org.apache.catalina.loader.WebappClassLoaderBase] The web application [ROOT] appears to have started a thread named [HikariPool-1 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@17.0.7/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@17.0.7/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@17.0.7/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@17.0.7/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@17.0.7/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@17.0.7/java.lang.Thread.run(Thread.java:833)
+[2023-08-21 10:06:28.522 WARN  restartedMain] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+[2023-08-21 10:06:28.522 INFO  restartedMain] [org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2023-08-21 10:06:28.524 INFO  restartedMain] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown initiated...
+[2023-08-21 10:06:28.526 INFO  restartedMain] [com.zaxxer.hikari.HikariDataSource] HikariPool-1 - Shutdown completed.
+[2023-08-21 10:06:28.674 INFO  restartedMain] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLogger] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+[2023-08-21 10:06:28.694 ERROR restartedMain] [org.springframework.boot.SpringApplication] Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:602)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:436)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:312)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.green.greengram.GreengramApplication.main(GreengramApplication.java:13)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:489)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:211)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfiguration' defined in file [D:\Students\Spring\2023-1-greengram-master\target\classes\com\green\greengram\common\config\security\SecurityConfiguration.class]: Unsatisfied dependency expressed through constructor parameter 6: Error creating bean with name 'tokenAccessDeniedHandler' defined in file [D:\Students\Spring\2023-1-greengram-master\target\classes\com\green\greengram\common\config\security\handler\TokenAccessDeniedHandler.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setAuthorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1189)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:417)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:210)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:173)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:168)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:153)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:846)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1328)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1318)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:866)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:241)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:428)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:918)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 18 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'tokenAccessDeniedHandler' defined in file [D:\Students\Spring\2023-1-greengram-master\target\classes\com\green\greengram\common\config\security\handler\TokenAccessDeniedHandler.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setAuthorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1352)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1189)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 68 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setAuthorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:825)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:778)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:483)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:417)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 82 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.OAuth2ClientConfiguration$OAuth2ClientWebMvcSecurityConfiguration': Unsatisfied dependency expressed through method 'setAuthorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:825)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:778)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:483)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1416)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:597)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1633)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1597)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1488)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:817)
+	... 106 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorizedClientRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientRepository' parameter 0: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1633)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1597)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1488)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:817)
+	... 123 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorizedClientService' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2WebSecurityConfiguration.class]: Unsatisfied dependency expressed through method 'authorizedClientService' parameter 0: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 139 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'clientRegistrationRepository' defined in class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientRegistrationRepositoryConfiguration.class]: Unsatisfied dependency expressed through method 'clientRegistrationRepository' parameter 0: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:550)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1332)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1162)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:560)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 153 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'spring.security.oauth2.client-org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties': Client id must not be empty.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:888)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 167 common frames omitted
+Caused by: java.lang.IllegalStateException: Client id must not be empty.
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.validateRegistration(OAuth2ClientProperties.java:68)
+	at java.base/java.util.HashMap$Values.forEach(HashMap.java:1065)
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.validate(OAuth2ClientProperties.java:63)
+	at org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties.afterPropertiesSet(OAuth2ClientProperties.java:59)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 178 common frames omitted

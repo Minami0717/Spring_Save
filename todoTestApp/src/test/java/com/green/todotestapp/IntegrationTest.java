@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Import(CharEncodingConfiguration.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Disabled
 @AutoConfigureMockMvc
 @Transactional
 @ActiveProfiles("test")
