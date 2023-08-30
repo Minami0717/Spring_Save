@@ -1,12 +1,12 @@
 package com.green.jpaexam.product;
 
-import com.green.jpaexam.product.model.ProductEntity;
+import com.green.jpaexam.entity.ProductEntity;
 import com.green.jpaexam.product.model.ProductRes;
+import com.green.jpaexam.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

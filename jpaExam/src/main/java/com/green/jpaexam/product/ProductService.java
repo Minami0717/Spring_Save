@@ -1,30 +1,53 @@
 package com.green.jpaexam.product;
 
+import com.green.jpaexam.repository.CategoryRepository;
+import com.green.jpaexam.entity.ProductDetailEntity;
 import com.green.jpaexam.product.model.ProductDto;
-import com.green.jpaexam.product.model.ProductEntity;
+import com.green.jpaexam.entity.ProductEntity;
 import com.green.jpaexam.product.model.ProductRes;
 import com.green.jpaexam.product.model.ProductUpdDto;
+import com.green.jpaexam.repository.ProductRepository;
+import com.green.jpaexam.repository.ProviderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductDao dao;
+    private final ProductRepository rep;
+    private final CategoryRepository categoryRepository;
+    private final ProviderRepository providerRepository;
 
     public ProductRes saveProduct(ProductDto dto) {
+        ProductDetailEntity detailEntity = ProductDetailEntity.builder()
+                .description(dto.getDescription())
+                .build();
+
         ProductEntity entity = ProductEntity.builder()
                 .name(dto.getName())
                 .price(dto.getPrice())
                 .stock(dto.getStock())
+                .categoryEntity(categoryRepository.findById(dto.getCategoryId()).get())
+                .providerEntity(providerRepository.findById(dto.getProviderId()).get())
                 .build();
 
-        return dao.saveProduct(entity);
+        entity.setProductDetailEntity(detailEntity);
+
+        rep.save(entity);
+
+        return ProductRes.builder()
+                .number(entity.getNumber())
+                .name(entity.getName())
+                .price(entity.getPrice())
+                .stock(entity.getStock())
+                .categoryNm(entity.getCategoryEntity().getName())
+                .providerNm(entity.getProviderEntity().getName())
+                .description(detailEntity.getDescription())
+                .createdAt(entity.getCreatedAtDateTime())
+                .build();
     }
 
     public Page<ProductRes> getProductAll(Pageable page) {

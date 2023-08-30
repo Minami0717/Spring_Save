@@ -11,4 +11,6 @@ public class ProductVo {
     private String name;
     private int price;
     private int stock;
+    private String providerName;
+    private String description;
 }

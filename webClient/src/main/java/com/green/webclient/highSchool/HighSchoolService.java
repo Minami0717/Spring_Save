@@ -79,8 +79,6 @@ public class HighSchoolService {
             e.printStackTrace();
         }
 
-        log.info(String.valueOf(schoolInfoList.size()));
-        mapper.insSchool(schoolInfoList);
         return schoolInfoList;
     }
 }

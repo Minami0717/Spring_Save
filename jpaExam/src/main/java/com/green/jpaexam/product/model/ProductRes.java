@@ -3,6 +3,9 @@ package com.green.jpaexam.product.model;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 public class ProductRes {
@@ -10,4 +13,8 @@ public class ProductRes {
     private String name;
     private int price;
     private int stock;
+    private String providerNm;
+    private String categoryNm;
+    private String description;
+    private String createdAt;
 }

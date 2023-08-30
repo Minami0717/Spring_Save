@@ -20,6 +20,7 @@ public class ProductEntity extends BaseEntity {
 
     @Id //PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)//auto_increment
+    @Column(updatable = false, nullable = false, columnDefinition = "BIGINT UNSIGNED")
     private Long number;
 
     @Column(nullable = false,length = 10)// not null 주기
@@ -30,4 +31,11 @@ public class ProductEntity extends BaseEntity {
 
     @Column(nullable = false)
     private Integer stock;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "provider_id")
+    private ProviderEntity providerEntity;
+
+    @OneToOne(mappedBy = "productEntity")
+    private ProductDetail productDetail;
 }
