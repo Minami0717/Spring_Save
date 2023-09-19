@@ -1,11 +1,9 @@
 package com.green.jpaexam.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,5 +24,7 @@ public class CategoryEntity {
     private String name;
 
     @OneToMany(mappedBy = "categoryEntity")
-    private List<ProductEntity> productEntityList;
+    @ToString.Exclude
+    @Builder.Default
+    private List<ProductEntity> productEntityList = new ArrayList<>();
 }

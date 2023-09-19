@@ -27,5 +27,6 @@ public class ProviderEntity extends BaseEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "providerEntity", cascade = CascadeType.PERSIST)
     @ToString.Exclude
+    @Builder.Default
     private List<ProductEntity> productEntityList = new ArrayList<>();
 }
